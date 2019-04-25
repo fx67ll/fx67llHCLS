@@ -10,7 +10,13 @@
 	网页存储API: localStorage sessionStorage
 	拖拽释放API
 	
-##常见的块状元素有哪些？行内元素？常见的空元素有哪些？较真的话还可以看下鲜为人知的元素有哪些？
+##行内元素和块级元素区别？常见的块状元素有哪些？行内元素？常见的空元素有哪些？较真的话还可以看下鲜为人知的元素有哪些？
+	CSS规范规定，每个元素都有display属性，确定该元素的类型，每个元素都有默认的display值，
+	如div的display默认值为“block”，则为“块级”元素；span默认display属性值为“inline”，是“行内”元素。
+	（1）行内元素有：a b span img input select strong（强调的语气）
+	（2）块级元素有：div ul ol li dl dt dd h1 h2 h3 h4…p
+	（3）常见的空元素：<br> <hr> <img> <input> <link> <meta>
+	（4）鲜为人知的是：<area> <base> <col> <command> <embed> <keygen> <param> <source> <track> <wbr>
 
 ##你对浏览器的内核有了解吗？
 	浏览器内核主要分为两部分，渲染引擎和js引擎
@@ -52,3 +58,57 @@
 	使用iframe之前需要考虑这两个缺点，如果需要使用iframe，最好是通过javascript动态给iframe添加src属性值，这样可以绕开以上两个问题
 
 ![20190424记录位置](recordImg/20190424总结位置.png)
+
+##如何实现浏览器内多个标签页之间的通信？
+	websoket全双工协议的优势，localstorage但safrai的无痕模式会爆错，不断刷cookie也是可以的，最后一个就是html5的新特性webwork（这四个说法都有待验证）
+	
+##HTML5的离线储存怎么使用，工作原理能不能解释一下？
+	在用户没有与因特网连接时，可以正常访问站点或应用，在用户与因特网连接时，更新用户机器上的缓存文件
+	原理是，HTML5的离线存储是基于一个新建的.appcache文件的缓存机制(不是存储技术)，通过这个文件上的解析清单离线存储资源，这些资源就会像cookie一样被存储了下来
+	之后当网络在处于离线状态下时，浏览器会通过被离线存储的数据进行页面展示
+	如何使用，暂未实践
+	
+##CSS3有哪些新特性？
+	新增各种CSS选择器  （: not(.input)：所有 class 不是“input”的节点）
+	圆角          （border-radius:8px）
+	多列布局      （multi-column layout）
+	阴影和反射    （Shadow\Reflect）
+	文字特效      （text-shadow、）
+	文字渲染      （Text-decoration）
+	线性渐变      （gradient）
+	旋转          （transform）
+	缩放,定位,倾斜,动画,多背景
+	
+##CSS选择符有哪些？哪些属性可以继承？优先级是怎样的？
+	1.id选择器（ # myid）
+	2.类选择器（.myclassname）
+	3.标签选择器（div, h1, p）
+	4.相邻选择器（h1 + p）
+	5.子选择器（ul > li）
+	6.后代选择器（li a）
+	7.通配符选择器（ * ）
+	8.属性选择器（a[rel = "external"]）
+	9.伪类选择器（a:hover, li:nth-child）
+	
+	可继承的样式： font-size font-family color, UL LI DL DD DT
+	不可继承的样式：border padding margin width height
+	
+	优先级就近原则，同权重情况下样式定义最近者为准，同权重: 内联样式表（标签内部）> 嵌入样式表（当前文件中）> 外部样式表（外部文件中）
+	important 比 内联优先级高，载入样式以最后载入的定位为准
+	
+##CSS3新增伪类有那些？
+	p:first-of-type 选择属于其父元素的首个 <p> 元素的每个 <p> 元素。
+	p:last-of-type  选择属于其父元素的最后 <p> 元素的每个 <p> 元素。
+	p:only-of-type  选择属于其父元素唯一的 <p> 元素的每个 <p> 元素。
+	p:only-child    选择属于其父元素的唯一子元素的每个 <p> 元素。
+	p:nth-child(2)  选择属于其父元素的第二个子元素的每个 <p> 元素。
+	:after          在元素之前添加内容，也可以用来做清除浮动。
+	:before         在元素之后添加内容
+	:enabled        页面上可用状态的元素
+	:disabled       控制表单控件的禁用状态。
+	:checked        单选框或复选框被选中。
+
+##如何让未知宽高的子元素在未知宽高的父元素当中绝对居中？
+	
+##浮动有什么副作用？请你说一下如何清除浮动？
+	还没时间去看一下理解实践一下这个
