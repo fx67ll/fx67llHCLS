@@ -142,7 +142,7 @@
 	  .sss !important; //编译成css后，每个.sss中的属性后面都加上了 !important
 	}
 
-## less中的函数们，[参考官网](https://less.bootcss.com/functions/)
+## less中的函数们---[参考官网](https://less.bootcss.com/functions/)
 	.temp{
 	  width: convert(9px, "mm");  //convert()进行长度单位转换 适合游戏场景svg
 	}
