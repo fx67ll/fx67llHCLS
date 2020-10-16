@@ -16,8 +16,6 @@
 ## 如何实现数组的随机排序？
 	sortRandom 练习了随机数，没练习排序
 	
-[20190428暂时写到这里，进度有点满了，这里是网页链接](https://blog.csdn.net/github_38596081/article/details/86776182)
-
 ## 什么是继承？如何实现继承？并具体说一下如何实现？
 
 ## javascript创建对象的几种方式？并具体说一下如何实现？
@@ -39,6 +37,8 @@
 	(4)发送HTTP请求
 	(5)获取异步调用返回的数据
 	(6)使用JavaScript和DOM实现局部刷新
+	
+[参考文档连接](https://blog.csdn.net/github_38596081/article/details/86776182)
 	
 	
 	
