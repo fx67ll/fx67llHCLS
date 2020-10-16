@@ -27,6 +27,7 @@
 	}
 	
 ## loop循环函数，原博说基本不会用，感觉在某些很独特的情况下还是可以用用的
+```
 	.widthFun(100);
 	 
 	.widthFun(@n, @i:10) when (@i <= @n){
@@ -35,8 +36,10 @@
 	  }
 	  .widthFun(@n,(@i+10))
 	}
+```
 ---
-	***上面这段loop编程成css:***
+	**上面这段loop编程成css:**
+```
 	width-10 {
 	  ·width: 10%;
 	}
@@ -67,7 +70,7 @@
 	width-100 {
 	  ·width: 100%;
 	}
-
+```
 
 ## 常用的数值计算函数
 	//unit()对数值连接单位/去除单位
@@ -94,5 +97,5 @@
 	//darken()颜色变暗
 	background-color: darken(@bgColor, 20%);
 
-[参考文档-1](https://less.bootcss.com/functions/)
+[参考文档-1](https://less.bootcss.com/functions/)</br> 
 [参考文档-2](https://www.jianshu.com/p/191d1e21f7ed/)
