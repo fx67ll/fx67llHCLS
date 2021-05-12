@@ -1,4 +1,4 @@
-# 前端知识点基础总结CSS3
+# CSS3知识点实践总结
 	
 ## CSS3有哪些新特性？
 	新增各种CSS选择器  （: not(.input)：所有 class 不是“input”的节点）
