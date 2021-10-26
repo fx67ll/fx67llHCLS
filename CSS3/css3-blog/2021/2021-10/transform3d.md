@@ -201,7 +201,7 @@
 	}
 ```
 
-#### 准换基点位置属性（transform-origin）  
+#### 转换基点位置属性（transform-origin）  
 1. `transform-origin`属性允许您改变被转换元素的位置，`2D`转换元素能够改变元素xy轴，`3D`转换元素还能改变其z轴  
 2. `transform-origin: x-axis y-axis z-axis`，这定义了视图被置于xyz轴的何处，z值只能是`length`，xy可以分别是这些值：
 	+ left  
