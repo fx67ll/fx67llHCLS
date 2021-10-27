@@ -53,7 +53,7 @@
 	+ 第二种，是配合`transform`属性一起，例如：`transform: perspective(600px) rotateY(45deg)`  
 	+ 参考下方示例，您可以在自己的demo中测试效果区别，你会发现第二种所有元素都是同一角度的旋转，
 		这是因为第一种透视点是`.stage`中央，第二种透视点是每一个`.box`中央  
-```
+```CSS
 	// 第一种写法
 	.stage {
 		width: 100%;
@@ -100,7 +100,7 @@
 5. 该属性必须与`perspective`属性一同使用，而且只影响`3D`转换元素，它可以定义在元素中，并且同`perspective`属性一样，定义在哪里影响哪里
 6. 默认值是`50% 50%`，表示 xy 中心位置  
 7. 下面我们利用一个示例来看看，你依旧可以通过修改demo中的参数，看到效果的变化  
-```
+```CSS
 	// 50% 50% 正好是变换元素的中心点，也是默认值  
 	.stage {
 		width: 100%;
@@ -134,7 +134,7 @@
 #### 透视盲区
 在我们进行3D变换的时候还会遇到透视盲区的问题，比如一个正方形，旋转45°之后，正好和你的视线完全平行，那么这个面你就看不到，这就是视觉盲区  
 你可以利用下方代码在自己的demo中查看一下效果  
-```
+```CSS
 	// 我的电脑分辨率是`1920*1080`，透视距离是`604px`
 	// 如果你看不到效果，可以尝试修改旋转角度或透视距离，找一下出现盲区的角度  
 	.stage {
@@ -179,7 +179,7 @@
 	> 如果为正，运动将为顺时针，如果为负，则为逆时针，想要了解更多可以参考 [这篇文档中的动态示例](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform-function/rotate3d()) 理解  
 
 `2D`变换请参考 [本文Tips中的链接](https://www.w3school.com.cn/css/css3_2dtransforms.asp) 或百度教程，下面我们来详细看下实现静态`3D`变换的代码  
-```
+```CSS
 	.stage {
 		width: 100%;
 		height: 100%;
@@ -212,7 +212,7 @@
 3. `transform-origin`属性必须和`transform`属性一同使用  
 4. 默认值是`50% 50% 0`，表示转换基点位于 xy 中心以及 z轴 0 的位置
 5. 下面我们利用一个示例来看看，你依旧可以通过修改demo中的参数，看到效果的变化
-```
+```CSS
 	.stage {
 		width: 100%;
 		height: 100%;
@@ -242,7 +242,7 @@
 2. `transform-style: flat | preserve-3d`，`flat`表示子元素将不保留其`3D`位置，`preserve-3d`表示子元素保留其`3D`位置  
 3. 默认值是`flat`，不保留3D位置  
 4. 下面用一个不同于上面几个示例的示例来展示整个属性的效果，你可以在demo中修改几个属性来查看效果  
-```
+```HTML
 	<div class="stage">
 		<div class="box">
 			<div class="box-out">
@@ -250,7 +250,8 @@
 			</div>
 		</div>
 	</div>
-	
+```
+```CSS
 	.stage {
 		width: 100%;
 		height: 100%;
@@ -295,14 +296,15 @@
 2. `backface-visibility: visible | hidden`，`visible`表示背面是可见的，`hidden`表示背面不可见  
 3. 该属性主要用于不想展示被旋转元素的背面时使用，通常用于一些翻转动效，比如炉石的抽卡，就属于背面可见    
 4. 下面我们可以通过翻拍效果示例来理解一下这个属性的作用  
-```
+```HTML
 	<div class="stage">
 		<div class="box">
 			<div class="box-prev"></div>
 			<div class="box-next"></div>
 		</div>
 	</div>
-	
+```
+```CSS
 	.stage {
 		width: 100%;
 		height: 100%;
@@ -348,7 +350,7 @@
 
 ### 做一些简单的循环动效  
 学习了上述代码之后，我们可以做一些简单的循环动效了，这里我们用一个简单的翻书效果来练习，当然还有很多奇思妙想期待你自己去实践啦！  
-```
+```HTML
 	<div class="stage">
 		<div class="box">
 			<div class="box-prev"></div>
@@ -359,7 +361,8 @@
 			</div>
 		</div>
 	</div>
-	
+```
+```CSS
 	.stage {
 		width: 100%;
 		height: 100%;

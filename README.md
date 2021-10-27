@@ -10,7 +10,7 @@ A man without distant care must have near sorrow！
 4. Sass/Scss  
 
 ## 0.1.4.20211026
-* 更新笔记：详解如何用 CSS3 完成 3D transform变换（最后一个翻书动效改进）
+* 更新笔记：详解如何用 CSS3 完成 3D transform变换（最后一个翻书动效改进，区分代码块语言）
 
 ## 0.1.4.20211026
 * 更新笔记：详解如何用 CSS3 完成 3D transform变换（已完成发布，但是后续补上复杂翻书动效的练习代码）
