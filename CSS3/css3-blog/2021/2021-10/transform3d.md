@@ -414,6 +414,16 @@
 			background-color: #aaff7f;
 		}
 	}
+	
+	.box:hover .box-prev {
+		transform: perspective(800px) rotateY(-180deg);
+		transform-origin: perspective(800px) 50% 50% 0;
+	}
+
+	.box:hover .box-midd {
+		transform: perspective(800px) rotateY(-180deg);
+		transform-origin: perspective(800px) 50% 50% 0;
+	}
 ```
 
 
