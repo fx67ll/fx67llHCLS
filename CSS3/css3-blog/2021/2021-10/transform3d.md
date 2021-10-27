@@ -352,15 +352,17 @@
 	<div class="stage">
 		<div class="box">
 			<div class="box-prev"></div>
-			<div class="box-next"></div>
+			<div class="box-midd"></div>
+			<div class="box-next">
+				<span></span>
+				<span></span>
+			</div>
 		</div>
 	</div>
 	
 	.stage {
 		width: 100%;
 		height: 100%;
-		perspective: 1600px;
-		-webkit-perspective: 1600px;
 	}
 	
 	.box {
@@ -370,35 +372,44 @@
 		position: relative;
 		transition: 0.5s all;
 		transform-style: preserve-3d;
-		-webkit-transform-style: preserve-3d;
 	}
 	
 	.box-prev,
+	.box-midd,
 	.box-next {
 		width: 100%;
 		height: 100%;
 		position: absolute;
-		transition: 0.5s all;
-		backface-visibility: hidden;
+		transition: 3s all;
 	}
 	
 	.box-prev {
 		background-color: #ffff9b;
-		z-index: 0;
+		z-index: 2;
 	}
 	
-	.box-next {
+	.box-midd {
 		background-color: #aaff7f;
 		z-index: 1;
 	}
 	
-	.box:hover .box-prev {
-		transform: rotateY(360deg);
-		z-index: 2;
-	}
+	.box-next {
+		display: flex;
+		justify-content: space-between;
+		z-index: 0;
 	
-	.box:hover .box-next {
-		background-color: #ffff9b;
+		span {
+			width: 50%;
+			height: 100%;
+		}
+	
+		span:nth-child(1) {
+			background-color: #ffff9b;
+		}
+	
+		span:nth-child(2) {
+			background-color: #aaff7f;
+		}
 	}
 ```
 
