@@ -400,19 +400,19 @@
 		display: flex;
 		justify-content: space-between;
 		z-index: 0;
+	}
 	
-		span {
-			width: 50%;
-			height: 100%;
-		}
-	
-		span:nth-child(1) {
-			background-color: #ffff9b;
-		}
-	
-		span:nth-child(2) {
-			background-color: #aaff7f;
-		}
+	.box-next span {
+		width: 50%;
+		height: 100%;
+	}
+		
+	.box-next span:nth-child(1) {
+		background-color: #ffff9b;
+	}
+		
+	.box-next span:nth-child(2) {
+		background-color: #aaff7f;
 	}
 	
 	.box:hover .box-prev {
