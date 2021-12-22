@@ -2,12 +2,24 @@
 A man without distant care must have near sorrow！
 
 居安思危，记住！人无远虑，必有近忧
+、
 
 ### Basic Exercises
 1. Html5  
 2. CSS3  
 3. Less 
 4. Sass/Scss  
+
+
+### CSS3次级目录说明
+|  css3-blog   | css3-practice  |  css3-project  |
+|  :----:  |  :----:  |  :----:  |
+|  css3博客文章  |  css3练习  |  css3学习项目  |
+
+
+## 0.1.6.20211222
+* 添加目录说明  
+* 添加魔方小游戏插件源码  
 
 ## 0.1.5.20211127
 * 修改404模板的favicon.ico文件  
