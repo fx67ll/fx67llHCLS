@@ -18,7 +18,7 @@ A man without distant care must have near sorrow！
 
 
 ## 0.1.6.20211222
-* 添加目录说明  
+* 添加CSS3次级目录说明  
 * 添加魔方小游戏插件源码  
 
 ## 0.1.5.20211127
