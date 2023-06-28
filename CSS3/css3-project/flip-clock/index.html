@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>翻页时钟 - 倒计时示例</title>
+		<link rel="stylesheet" type="text/css" href="lib/css/normalize.css" />
+		<link rel="stylesheet" href="lib/css/flipclock.css">
+		<script src="lib/js/jquery.min.js"></script>
+		<script src="lib/js/flipclock.js"></script>
+	</head>
+	<body>
+		<div style="margin:3em 2em;">
+			<div class="clock"></div>
+			<div class="message" style="margin:2em;"></div>
+		</div>
+
+		<script type="text/javascript">
+			var clock;
+			$(document).ready(function() {
+				var clock;
+				clock = $('.clock').FlipClock({
+					clockFace: 'DailyCounter',
+					autoStart: false,
+					callbacks: {
+						stop: function() {
+							$('.message').html('The clock has stopped!')
+						}
+					}
+				});
+				clock.setTime(5);
+				clock.setCountdown(true);
+				clock.start();
+			});
+		</script>
+	</body>
+</html>
