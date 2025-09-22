@@ -17,6 +17,9 @@ A man without distant care must have near sorrow！
 |  css3博客文章  |  css3练习  |  css3学习项目  |
 
 
+## 0.2.0.20250922  
+* 添加AI生成的国庆出游计划路书    
+
 ## 0.1.8.20230628
 * 添加翻页时钟源码  
 
