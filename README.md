@@ -17,6 +17,9 @@ A man without distant care must have near sorrow！
 |  css3博客文章  |  css3练习  |  css3学习项目  |
 
 
+## 0.2.1.20251027  
+* 添加AI生成的村上春树读书笔记    
+    
 ## 0.2.0.20250922  
 * 添加AI生成的国庆出游计划路书    
 
