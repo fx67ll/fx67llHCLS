@@ -17,6 +17,9 @@ A man without distant care must have near sorrow！
 |  css3博客文章  |  css3练习  |  css3学习项目  |
 
 
+## 0.2.2.20251219  
+* 添加AI生成的元旦温泉滑雪计划路书    
+
 ## 0.2.1.20251027  
 * 添加AI生成的村上春树读书笔记    
     
