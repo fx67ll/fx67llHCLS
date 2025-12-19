@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千岛湖-湍口温泉-大明山滑雪旅游攻略</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/v4-shims.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366F1',
+                        secondary: '#EC4899',
+                        accent: '#8B5CF6',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444',
+                        dark: '#1F2937',
+                        'vibrant-blue': '#3B82F6',
+                        'vibrant-pink': '#EC4899',
+                        'vibrant-purple': '#8B5CF6',
+                        'vibrant-green': '#10B981',
+                        'vibrant-orange': '#F59E0B',
+                        'energetic-red': '#EF4444',
+                        'energetic-yellow': '#EAB308',
+                        'energetic-cyan': '#06B6D4',
+                        'energetic-lime': '#84CC16',
+                        'ocean-blue': '#0EA5E9',
+                        'ocean-teal': '#14B8A6',
+                        'ocean-indigo': '#6366F1',
+                        'ocean-sky': '#38BDF8',
+                        'forest-green': '#22C55E',
+                        'forest-emerald': '#10B981',
+                        'forest-teal': '#14B8A6',
+                        'forest-cyan': '#06B6D4'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'fadeIn': 'fadeIn 0.8s ease-in-out',
+                        'slideUp': 'slideUp 0.6s ease-out',
+                        'slideIn': 'slideIn 0.7s ease-out',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-30px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .gradient-text {
+                @apply bg-clip-text text-transparent bg-gradient-to-r from-vibrant-blue to-vibrant-purple;
+            }
+            .gradient-bg {
+                @apply bg-gradient-to-br from-vibrant-blue to-vibrant-purple;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:-translate-y-2 hover:scale-105 hover:shadow-xl;
+            }
+            .btn-glow {
+                @apply relative overflow-hidden;
+            }
+            .btn-glow::before {
+                content: '';
+                @apply absolute inset-0 bg-gradient-to-r from-vibrant-blue/20 to-vibrant-purple/20 opacity-0 transition-opacity duration-300;
+            }
+            .btn-glow:hover::before {
+                @apply opacity-100;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0,0,0,0.25);
+            }
+        }
+    </style>
+    <style>
+        /* 自定义滚动条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c5c5c5;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+        
+        /* 页面加载动画 */
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        
+        /* 平滑滚动 */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-800 bg-gray-50">
+    <!-- 导航栏 -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm shadow-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <i class="fa fa-map-marker text-2xl gradient-text"></i>
+                    <span class="text-xl font-bold gradient-text">旅游攻略</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#overview" class="text-gray-700 hover:text-primary transition-colors duration-300">行程概览</a>
+                    <a href="#itinerary" class="text-gray-700 hover:text-primary transition-colors duration-300">详细行程</a>
+                    <a href="#accommodation" class="text-gray-700 hover:text-primary transition-colors duration-300">住宿推荐</a>
+                    <a href="#food" class="text-gray-700 hover:text-primary transition-colors duration-300">美食攻略</a>
+                    <a href="#transport" class="text-gray-700 hover:text-primary transition-colors duration-300">交通指南</a>
+                    <a href="#tips" class="text-gray-700 hover:text-primary transition-colors duration-300">注意事项</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-primary transition-colors duration-300">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 移动端菜单 -->
+        <div id="mobile-menu" class="md:hidden bg-white shadow-lg absolute w-full transform -translate-x-full transition-transform duration-300 ease-in-out">
+            <div class="px-4 py-6 space-y-3">
+                <a href="#overview" class="block text-gray-700 hover:text-primary transition-colors duration-300 py-2">行程概览</a>
+                <a href="#itinerary" class="block text-gray-700 hover:text-primary transition-colors duration-300 py-2">详细行程</a>
+                <a href="#accommodation" class="block text-gray-700 hover:text-primary transition-colors duration-300 py-2">住宿推荐</a>
+                <a href="#food" class="block text-gray-700 hover:text-primary transition-colors duration-300 py-2">美食攻略</a>
+                <a href="#transport" class="block text-gray-700 hover:text-primary transition-colors duration-300 py-2">交通指南</a>
+                <a href="#tips" class="block text-gray-700 hover:text-primary transition-colors duration-300 py-2">注意事项</a>
+                <button id="close-menu" class="mt-4 w-full bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 rounded transition-colors duration-300">
+                    <i class="fa fa-times mr-2"></i>关闭菜单
+                </button>
+            </div>
+        </div>
+        <!-- 移动端菜单遮罩 -->
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/50 hidden z-40 md:hidden"></div>
+    </nav>
+
+    <!-- 英雄区域 -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-900 via-purple-900 to-pink-800">
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <img src="https://aka.doubaocdn.com/s/jR6N1xenmD" alt="千岛湖美景" class="absolute inset-0 w-full h-full object-cover">
+        <div class="relative z-20 text-center text-white px-4 max-w-4xl mx-auto">
+            <h1 class="text-[clamp(2.5rem,6vw,4rem)] font-bold mb-6 leading-tight text-shadow-lg animate-fadeIn">
+                千岛湖-湍口温泉-大明山滑雪
+            </h1>
+            <p class="text-[clamp(1.2rem,3vw,1.8rem)] mb-8 text-shadow animate-slideUp">
+                3天2晚·山水温泉滑雪之旅
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center animate-slideIn">
+                <a href="#overview" class="btn-glow bg-white text-primary hover:bg-gray-100 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    <i class="fa fa-compass mr-2"></i>开始探索
+                </a>
+                <a href="#itinerary" class="btn-glow bg-transparent border-2 border-white text-white hover:bg-white/10 px-8 py-4 rounded-full font-semibold transition-all duration-300 transform hover:scale-105">
+                    <i class="fa fa-calendar mr-2"></i>查看行程
+                </a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+            <a href="#overview" class="text-white opacity-80 hover:opacity-100 transition-opacity duration-300">
+                <i class="fa fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- 行程概览 -->
+    <section id="overview" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-4 gradient-text">行程概览</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    这是一条集湖光山色、温泉养生、滑雪乐趣于一体的完美周末路线
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 text-center card-hover">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-tint text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">千岛湖</h3>
+                    <p class="text-gray-600 mb-4">1078座岛屿的壮美湖景，品尝地道鱼头汤</p>
+                    <span class="text-blue-600 text-sm font-medium">中心湖区游览</span>
+                </div>
+                
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 text-center card-hover">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-thermometer-half text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">湍口温泉</h3>
+                    <p class="text-gray-600 mb-4">千年氡温泉，放松身心，享受温暖时光</p>
+                    <span class="text-green-600 text-sm font-medium">无限次温泉体验</span>
+                </div>
+                
+                <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl p-8 text-center card-hover">
+                    <div class="w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-snowflake-o text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">大明山滑雪</h3>
+                    <p class="text-gray-600 mb-4">江南地区最佳滑雪场，体验冰雪乐趣</p>
+                    <span class="text-pink-600 text-sm font-medium">专业滑雪设施</span>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="text-3xl font-bold text-vibrant-blue mb-2">3</div>
+                    <div class="text-gray-600">天</div>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="text-3xl font-bold text-vibrant-green mb-2">2</div>
+                    <div class="text-gray-600">晚</div>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="text-3xl font-bold text-vibrant-purple mb-2">400+</div>
+                    <div class="text-gray-600">公里</div>
+                </div>
+                <div class="bg-gray-50 rounded-xl p-6">
+                    <div class="text-3xl font-bold text-vibrant-orange mb-2">3.5k+</div>
+                    <div class="text-gray-600">预算(2人)</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#itinerary" class="inline-flex items-center text-primary hover:text-primary/80 transition-colors duration-300">
+                    <span class="font-medium">查看详细行程</span>
+                    <i class="fa fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 详细行程安排 -->
+    <section id="itinerary" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-4 gradient-text">详细行程安排</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    精心规划的3天2晚行程，让您充分体验千岛湖的湖光山色、湍口温泉的舒适放松和大明山滑雪的刺激乐趣
+                </p>
+            </div>
+            
+            <!-- Day 1 -->
+            <div class="mb-16">
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">1</div>
+                    <h3 class="text-2xl font-bold">Day 1 (周六)：南京 → 千岛湖</h3>
+                </div>
+                
+                <div class="space-y-6 pl-16 relative">
+                    <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-blue-200"></div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">07:00 - 07:30</div>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">电动车出行</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">南京出发</h4>
+                        <p class="text-gray-600 mb-4">建议从南京市市区出发，走宁杭高速</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fa fa-clock-o mr-1"></i>车程4.5-5.5小时</span>
+                            <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fa fa-road mr-1"></i>距离约400公里</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-bolt mr-1"></i>小米SU7 Max</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">12:30 - 13:30</div>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">湖景房</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">抵达千岛湖，办理入住</h4>
+                        <p class="text-gray-600 mb-4">入住voco千岛湖阳光大酒店，酒店位于中心湖区小岛，环境优美</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-bed mr-1"></i>湖景房</span>
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full"><i class="fa fa-car mr-1"></i>免费停车</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">14:00 - 17:30</div>
+                            <span class="bg-cyan-100 text-cyan-800 text-xs px-3 py-1 rounded-full">游船游览</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">千岛湖中心湖区游览</h4>
+                        <p class="text-gray-600 mb-4">乘坐游船游览千岛湖中心湖区，欣赏1078座岛屿的壮美景色</p>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center">
+                                <i class="fa fa-map-marker text-blue-500 mr-2"></i>
+                                <span>梅峰岛：乘坐缆车登顶，俯瞰300余座岛屿</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa fa-map-marker text-blue-500 mr-2"></i>
+                                <span>月光岛：浪漫主题岛屿，适合拍照</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa fa-map-marker text-blue-500 mr-2"></i>
+                                <span>渔乐岛：体验渔家生活</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-3 text-sm mt-4">
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full"><i class="fa fa-ticket mr-1"></i>门票130元</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full"><i class="fa fa-ship mr-1"></i>游船65元</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">18:30 - 20:00</div>
+                            <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">必尝美食</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">品尝千岛湖鱼头</h4>
+                        <p class="text-gray-600 mb-4">推荐餐厅：鱼味馆或淳圆外，必点千岛湖有机鱼头汤</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full"><i class="fa fa-cutlery mr-1"></i>人均100元</span>
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full"><i class="fa fa-star mr-1"></i>鱼头汤168元</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 2 -->
+            <div class="mb-16">
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">2</div>
+                    <h3 class="text-2xl font-bold">Day 2 (周日)：千岛湖 → 湍口温泉</h3>
+                </div>
+                
+                <div class="space-y-6 pl-16 relative">
+                    <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-green-200"></div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">08:00 - 09:00</div>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">湖景早餐</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">酒店早餐</h4>
+                        <p class="text-gray-600 mb-4">voco酒店湖景早餐，边吃边赏湖景</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-cutlery mr-1"></i>中西式自助</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full"><i class="fa fa-eye mr-1"></i>湖景视野</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">09:30 - 11:30</div>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">文化体验</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">千岛湖深度游</h4>
+                        <p class="text-gray-600 mb-4">文渊狮城：复刻千年古城，了解历史文化</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full"><i class="fa fa-ticket mr-1"></i>门票80元</span>
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full"><i class="fa fa-university mr-1"></i>文化体验</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">12:00 - 13:00</div>
+                            <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">午餐</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">千岛湖农家菜</h4>
+                        <p class="text-gray-600 mb-4">推荐餐厅：好灶头，品尝地道农家菜</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full"><i class="fa fa-cutlery mr-1"></i>人均80元</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-leaf mr-1"></i>农家风味</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">13:30 - 15:00</div>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">山路驾驶</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">前往湍口温泉</h4>
+                        <p class="text-gray-600 mb-4">车程约1小时，距离约48公里</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full"><i class="fa fa-road mr-1"></i>山路驾驶</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full"><i class="fa fa-exclamation-triangle mr-1"></i>注意安全</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-bolt mr-1"></i>电动车友好</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">15:30 - 17:00</div>
+                            <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">温泉酒店</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">办理入住，休息</h4>
+                        <p class="text-gray-600 mb-4">入住湍口众安氡温泉度假酒店，稍作休息</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full"><i class="fa fa-home mr-1"></i>温泉度假</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-bed mr-1"></i>舒适客房</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">17:00 - 21:00</div>
+                            <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">无限次</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">温泉体验</h4>
+                        <p class="text-gray-600 mb-4">50多个温泉池任选，推荐玫瑰池、红酒池、牛奶池</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full"><i class="fa fa-thermometer-half mr-1"></i>无限次</span>
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-tint mr-1"></i>水乐园</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full"><i class="fa fa-star mr-1"></i>千年氡温泉</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Day 3 -->
+            <div>
+                <div class="flex items-center mb-8">
+                    <div class="w-12 h-12 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl mr-4">3</div>
+                    <h3 class="text-2xl font-bold">Day 3 (周一)：湍口温泉 → 大明山滑雪 → 南京</h3>
+                </div>
+                
+                <div class="space-y-6 pl-16 relative">
+                    <div class="absolute left-6 top-0 bottom-0 w-0.5 bg-red-200"></div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">08:00 - 09:00</div>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">温泉早餐</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">酒店早餐</h4>
+                        <p class="text-gray-600 mb-4">度假酒店自助早餐，品种丰富</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-cutlery mr-1"></i>中西式自助</span>
+                            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full"><i class="fa fa-star mr-1"></i>品质早餐</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">09:30 - 10:30</div>
+                            <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">高速直达</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">前往大明山滑雪场</h4>
+                        <p class="text-gray-600 mb-4">车程约40分钟-1小时</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-road mr-1"></i>高速路段</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-bolt mr-1"></i>快速直达</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">11:00 - 15:00</div>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">专业滑雪</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">大明山滑雪体验</h4>
+                        <p class="text-gray-600 mb-4">包含雪鞋、雪板、雪杖，有练习道、初级道、中级道</p>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex items-center">
+                                <i class="fa fa-map-marker text-blue-500 mr-2"></i>
+                                <span>练习道：适合初学者</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa fa-map-marker text-blue-500 mr-2"></i>
+                                <span>初级道：坡度较缓，适合入门</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa fa-map-marker text-blue-500 mr-2"></i>
+                                <span>中级道：坡度适中，适合有经验者</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-wrap gap-3 text-sm mt-4">
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full"><i class="fa fa-ticket mr-1"></i>周末275元</span>
+                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full"><i class="fa fa-snowflake-o mr-1"></i>索道80元</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-user mr-1"></i>教练300元/小时</span>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                        <div class="flex justify-between items-start mb-4">
+                            <div class="font-bold text-lg">16:30</div>
+                            <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">安全驾驶</span>
+                        </div>
+                        <h4 class="text-xl font-semibold mb-2">开始返程南京</h4>
+                        <p class="text-gray-600 mb-4">预计车程：4-4.5小时，约20:30-21:00抵达南京</p>
+                        <div class="flex flex-wrap gap-3 text-sm">
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-clock-o mr-1"></i>4-4.5小时</span>
+                            <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full"><i class="fa fa-exclamation-triangle mr-1"></i>注意安全</span>
+                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-bolt mr-1"></i>电动车返程</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 住宿推荐 -->
+    <section id="accommodation" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-4 gradient-text">住宿推荐</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    精选优质酒店，让您的旅程更加舒适
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://aka.doubaocdn.com/s/ru0G1xenmD" alt="voco千岛湖阳光大酒店" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-blue-500 text-white text-xs px-3 py-1 rounded-full">
+                            推荐指数 9.2/10
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">voco千岛湖阳光大酒店</h3>
+                        <p class="text-gray-600 mb-4">独占千岛湖1078座岛屿之一，三面环水，环境优美</p>
+                        <div class="space-y-2 text-sm mb-4">
+                            <div class="flex items-center">
+                                <i class="fa fa-map-marker text-blue-500 mr-2"></i>
+                                <span>千岛湖镇阳光路289号</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa fa-bed text-blue-500 mr-2"></i>
+                                <span>湖景房、城景房、亲子房</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa fa-swimming-pool text-blue-500 mr-2"></i>
+                                <span>室外泳池、健身房、儿童乐园、免费停车</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-2xl font-bold text-red-500">¥480<span class="text-sm font-normal text-gray-500">/晚起</span></div>
+                            <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full transition-colors duration-300">
+                                了解更多
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
+                    <div class="relative">
+                        <img src="https://aka.doubaocdn.com/s/b8kQ1xenmD" alt="湍口众安氡温泉度假酒店" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full">
+                            推荐指数 9.0/10
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">湍口众安氡温泉度假酒店</h3>
+                        <p class="text-gray-600 mb-4">千年氡温泉，巴厘岛建筑风格，山景环绕</p>
+                        <div class="space-y-2 text-sm mb-4">
+                            <div class="flex items-center">
+                                <i class="fa fa-map-marker text-green-500 mr-2"></i>
+                                <span>临安区湍口镇湍泉街188号</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa fa-bed text-green-500 mr-2"></i>
+                                <span>高级房、景观房、别墅</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fa fa-thermometer-half text-green-500 mr-2"></i>
+                                <span>50+温泉池、水乐园、儿童设施、萌宠乐园</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="text-2xl font-bold text-red-500">¥699<span class="text-sm font-normal text-gray-500">/晚含温泉+早餐</span></div>
+                            <button class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full transition-colors duration-300">
+                                了解更多
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 美食攻略 -->
+    <section id="food" class="py-20 bg-gradient-to-br from-red-50 to-orange-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-4 gradient-text">美食攻略</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    品尝地道湖鲜，享受舌尖上的千岛湖
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 text-red-600">千岛湖鱼头</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="text-xl font-semibold mb-3">必尝菜品</h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start">
+                                    <i class="fa fa-circle text-red-500 text-xs mt-1.5 mr-2"></i>
+                                    <div>
+                                        <span class="font-medium">千岛湖有机鱼头汤</span>
+                                        <p class="text-sm text-gray-600">汤色奶白，鲜而不腥，选用7斤以上的鳙鱼现杀现炖</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-circle text-red-500 text-xs mt-1.5 mr-2"></i>
+                                    <div>
+                                        <span class="font-medium">清蒸白花鱼</span>
+                                        <p class="text-sm text-gray-600">肉质细嫩，原汁原味，保留最纯正的湖鲜味道</p>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fa fa-circle text-red-500 text-xs mt-1.5 mr-2"></i>
+                                    <div>
+                                        <span class="font-medium">秀水螺蛳</span>
+                                        <p class="text-sm text-gray-600">当地特色，鲜美可口，是下酒的绝佳小菜</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 shadow-md">
+                            <h4 class="text-lg font-semibold mb-3">点餐建议</h4>
+                            <div class="space-y-2">
+                                <div class="flex justify-between">
+                                    <span><i class="fa fa-cutlery text-red-500 mr-2"></i>鱼头汤：128-168元/锅</span>
+                                    <span class="text-red-600 font-medium">(足够2-3人食用)</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fa fa-plus text-green-500 mr-2"></i>
+                                    <span>搭配：千岛湖粉皮、农家土鸡蛋</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-600">
+                                    <i class="fa fa-clock-o text-blue-500 mr-2"></i>
+                                    <span>推荐时间：晚餐时段，边吃边赏湖景</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <img src="https://aka.doubaocdn.com/s/srwd1xenmD" alt="千岛湖鱼头" class="w-full h-auto rounded-2xl shadow-xl">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl"></div>
+                    <div class="absolute bottom-6 left-6 text-white">
+                        <h4 class="text-xl font-bold mb-2">地道湖鲜</h4>
+                        <p class="text-sm opacity-90">现捕现做，新鲜美味</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center text-white">
+                            <i class="fa fa-cutlery text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">千岛湖鱼味馆</h4>
+                            <div class="flex items-center text-yellow-500 text-sm">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                                <span class="text-gray-600 ml-2">4.5/5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">30年老字号，正宗鱼头汤，环境宽敞明亮，适合大型家庭聚餐或团建</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">地址：</span>
+                            <span>千岛湖镇排岭南路2号</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">人均：</span>
+                            <span>120-150元</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">营业时间：</span>
+                            <span>10:00-21:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white">
+                            <i class="fa fa-home text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-lg font-semibold">淳圆外寻味古村落</h4>
+                            <div class="flex items-center text-yellow-500 text-sm">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-o"></i>
+                                <span class="text-gray-600 ml-2">4.0/5</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">临湖而建，粉墙黛瓦的徽派建筑与湖光山色相映成趣，环境优美</p>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">地址：</span>
+                            <span>千岛湖镇睦州大道</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">人均：</span>
+                            <span>100-130元</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">营业时间：</span>
+                            <span>10:30-21:30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 交通指南 -->
+    <section id="transport" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-4 gradient-text">交通指南</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    详细的自驾路线和交通信息，小米SU7 Max电动车专属指南
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 mb-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">自驾路线图</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6">
+                            <h4 class="text-lg font-semibold mb-3">南京 → 千岛湖</h4>
+                            <p class="text-gray-700 mb-4">南京市区 → 宁杭高速(G25) → 杭州绕城高速 → 杭新景高速 → 千岛湖出口</p>
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <div class="text-2xl font-bold text-blue-600">400</div>
+                                    <div class="text-sm text-gray-600">公里</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-blue-600">4.5-5.5</div>
+                                    <div class="text-sm text-gray-600">小时</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-blue-600">¥500</div>
+                                    <div class="text-sm text-gray-600">费用</div>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-sm text-green-600 flex items-center justify-center">
+                                <i class="fa fa-bolt mr-2"></i>小米SU7 Max 电动车
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6">
+                            <h4 class="text-lg font-semibold mb-3">千岛湖 → 湍口温泉</h4>
+                            <p class="text-gray-700 mb-4">千岛湖镇 → 千汾线 → 昌文线 → 湍口镇</p>
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <div class="text-2xl font-bold text-green-600">48</div>
+                                    <div class="text-sm text-gray-600">公里</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-green-600">1-1.5</div>
+                                    <div class="text-sm text-gray-600">小时</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-green-600">山路</div>
+                                    <div class="text-sm text-gray-600">路况</div>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-sm text-orange-600 flex items-center justify-center">
+                                <i class="fa fa-exclamation-triangle mr-2"></i>注意安全
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl p-6">
+                            <h4 class="text-lg font-semibold mb-3">湍口温泉 → 大明山</h4>
+                            <p class="text-gray-700 mb-4">湍口镇 → G56杭瑞高速 → 白果出口 → 大明山景区</p>
+                            <div class="grid grid-cols-3 gap-4 text-center">
+                                <div>
+                                    <div class="text-2xl font-bold text-pink-600">50</div>
+                                    <div class="text-sm text-gray-600">公里</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-pink-600">40分钟-1</div>
+                                    <div class="text-sm text-gray-600">小时</div>
+                                </div>
+                                <div>
+                                    <div class="text-2xl font-bold text-pink-600">高速</div>
+                                    <div class="text-sm text-gray-600">路况</div>
+                                </div>
+                            </div>
+                            <div class="mt-4 text-sm text-blue-600 flex items-center justify-center">
+                                <i class="fa fa-car mr-2"></i>快速直达
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">费用明细</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h4 class="text-lg font-semibold mb-4 flex items-center">
+                                <i class="fa fa-road text-blue-500 mr-2"></i>过路费
+                            </h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>南京 → 千岛湖</span>
+                                    <span class="font-medium">¥200</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>千岛湖 → 湍口</span>
+                                    <span class="font-medium">¥30</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>湍口 → 大明山</span>
+                                    <span class="font-medium">¥20</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>大明山 → 南京</span>
+                                    <span class="font-medium">¥180</span>
+                                </div>
+                                <div class="flex justify-between items-center py-3 font-bold text-lg">
+                                    <span>总计</span>
+                                    <span class="text-blue-600">¥430</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h4 class="text-lg font-semibold mb-4 flex items-center">
+                                <i class="fa fa-bolt text-green-500 mr-2"></i>电费估算
+                            </h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>总里程</span>
+                                    <span class="font-medium">约800公里</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>能耗估算</span>
+                                    <span class="font-medium">15kWh/100km</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>电价</span>
+                                    <span class="font-medium">¥1.5/kWh</span>
+                                </div>
+                                <div class="flex justify-between items-center py-3 font-bold text-lg">
+                                    <span>总计</span>
+                                    <span class="text-green-600">¥180</span>
+                                </div>
+                            </div>
+                            <div class="mt-4 bg-green-50 text-green-700 p-3 rounded-lg text-sm flex items-center">
+                                <i class="fa fa-info-circle mr-2"></i>
+                                小米SU7 Max电动车相比燃油车可节省约¥300油费
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-6 shadow-lg">
+                            <h4 class="text-lg font-semibold mb-4 flex items-center">
+                                <i class="fa fa-parking text-orange-500 mr-2"></i>停车费用
+                            </h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>voco千岛湖酒店</span>
+                                    <span class="font-medium text-green-600">免费</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>湍口温泉酒店</span>
+                                    <span class="font-medium text-green-600">免费</span>
+                                </div>
+                                <div class="flex justify-between items-center py-2 border-b border-gray-100">
+                                    <span>大明山景区</span>
+                                    <span class="font-medium">¥10/天</span>
+                                </div>
+                                <div class="flex justify-between items-center py-3 font-bold text-lg">
+                                    <span>总计</span>
+                                    <span class="text-orange-600">¥10</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 小米SU7 Max电动车专属贴士 -->
+            <div class="bg-gradient-to-r from-green-500 to-blue-600 rounded-2xl p-8 text-white">
+                <h3 class="text-2xl font-bold mb-6 text-center">小米SU7 Max 电动车专属贴士</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-battery-full text-2xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">续航无忧</h4>
+                        <p class="text-white/80">满电续航可达700km，往返南京完全够用，无需中途充电</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-plug text-2xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">充电建议</h4>
+                        <p class="text-white/80">千岛湖酒店和湍口温泉酒店均有充电桩，建议每晚充电</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fa fa-leaf text-2xl"></i>
+                        </div>
+                        <h4 class="text-lg font-semibold mb-2">绿色出行</h4>
+                        <p class="text-white/80">全程零排放，为环保贡献一份力量，享受绿色旅行体验</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 费用预算 -->
+    <section id="budget" class="py-20 bg-gradient-to-br from-purple-50 to-pink-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-4 gradient-text">费用预算</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    2人总预算：约3500-4500元（小米SU7 Max电动车版）
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+                    <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-bed text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">住宿费用</h3>
+                    <div class="text-3xl font-bold text-purple-600 mb-4">¥1,179</div>
+                    <p class="text-gray-600 text-sm">voco酒店480元 + 温泉酒店699元</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-ticket text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">门票费用</h3>
+                    <div class="text-3xl font-bold text-blue-600 mb-4">¥1,100</div>
+                    <p class="text-gray-600 text-sm">千岛湖390元 + 滑雪850元</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+                    <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-cutlery text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">餐饮费用</h3>
+                    <div class="text-3xl font-bold text-red-600 mb-4">¥500</div>
+                    <p class="text-gray-600 text-sm">鱼头200元 + 其他300元</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg text-center card-hover">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-car text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-2">交通费用</h3>
+                    <div class="text-3xl font-bold text-green-600 mb-4">¥620</div>
+                    <p class="text-gray-600 text-sm">过路费430元 + 电费180元 + 停车10元</p>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <h3 class="text-xl font-bold mb-6 text-center">省钱小贴士</h3>
+                <div class="grid md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa fa-calendar text-green-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">提前预订</h4>
+                        <p class="text-sm text-gray-600">门票、酒店提前预订可享优惠，滑雪票网络预订比现场便宜</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa fa-home text-blue-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">选择套餐</h4>
+                        <p class="text-sm text-gray-600">湍口温泉酒店套餐包含温泉和早餐，性价比更高</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa fa-suitcase text-purple-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">自带装备</h4>
+                        <p class="text-sm text-gray-600">滑雪服、泳衣等可自带，节省租赁费用</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fa fa-clock-o text-orange-600"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">错峰出行</h4>
+                        <p class="text-sm text-gray-600">工作日滑雪票价格更优惠，人少体验更好</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 注意事项 -->
+    <section id="tips" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-4 gradient-text">注意事项</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    安全第一，快乐出行
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-tint text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-6 text-center">千岛湖游览</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl p-4">
+                            <h4 class="font-semibold mb-2">游船时间</h4>
+                            <p class="text-sm text-gray-600">中心湖区游船：8:00-17:00<br>建议早上8点前到达，避开人流高峰</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-4">
+                            <h4 class="font-semibold mb-2">天气准备</h4>
+                            <p class="text-sm text-gray-600">湖面紫外线强，需做好防晒<br>准备雨具，山区天气多变</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-4">
+                            <h4 class="font-semibold mb-2">安全提醒</h4>
+                            <p class="text-sm text-gray-600">登岛时注意安全，穿防滑鞋<br>儿童需有成人陪同</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-thermometer-half text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-6 text-center">温泉体验</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl p-4">
+                            <h4 class="font-semibold mb-2">必备物品</h4>
+                            <p class="text-sm text-gray-600">泳衣、泳帽<br>毛巾、拖鞋（酒店提供）<br>护肤品、保湿用品</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-4">
+                            <h4 class="font-semibold mb-2">健康提醒</h4>
+                            <p class="text-sm text-gray-600">高血压、心脏病患者谨慎泡温泉<br>酒后不宜泡温泉<br>每次泡温泉时间不宜超过15分钟</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-4">
+                            <h4 class="font-semibold mb-2">儿童政策</h4>
+                            <p class="text-sm text-gray-600">1.2米以下儿童免费<br>需有成人陪同<br>儿童池水温适宜</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-br from-pink-50 to-pink-100 rounded-2xl p-8 card-hover">
+                    <div class="w-16 h-16 bg-pink-500 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa fa-snowflake-o text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-6 text-center">滑雪安全</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl p-4">
+                            <h4 class="font-semibold mb-2">装备准备</h4>
+                            <p class="text-sm text-gray-600">滑雪服、滑雪裤<br>头盔、手套、护目镜<br>保暖衣物、防水鞋</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-4">
+                            <h4 class="font-semibold mb-2">安全提醒</h4>
+                            <p class="text-sm text-gray-600">初学者建议请教练指导<br>遵守滑雪场规则<br>注意滑雪道标识</p>
+                        </div>
+                        
+                        <div class="bg-white rounded-xl p-4">
+                            <h4 class="font-semibold mb-2">滑雪技巧</h4>
+                            <p class="text-sm text-gray-600">先在练习道练习基本动作<br>学会正确的摔倒姿势<br>控制好速度，安全第一</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实用贴士 -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-4 gradient-text">实用贴士</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    让您的旅行更加顺利和愉快
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-calendar text-blue-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">最佳时间</h3>
+                    <p class="text-gray-600">冬季是滑雪的最佳季节，温泉体验也更加舒适。建议选择周末出行，时间充裕。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover">
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-mobile text-green-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">预订建议</h3>
+                    <p class="text-gray-600">酒店和滑雪票建议提前1-2周预订，特别是周末和节假日，价格更优惠且有房保障。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover">
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-camera text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">拍照攻略</h3>
+                    <p class="text-gray-600">千岛湖梅峰岛观景台是俯瞰全岛的最佳位置，温泉区的无边泳池也是拍照圣地。</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-6 shadow-lg text-center card-hover">
+                    <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-shopping-bag text-orange-600"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3">购物推荐</h3>
+                    <p class="text-gray-600">千岛湖鱼干、千岛玉叶茶、山核桃是当地特产，适合作为伴手礼带回家。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 拍照攻略 -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-4 gradient-text">拍照攻略</h2>
+                <p class="text-gray-600 text-lg max-w-3xl mx-auto">
+                    记录美好瞬间，留下珍贵回忆
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4 text-blue-600">千岛湖拍照点</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-map-marker text-blue-500 mr-2 mt-1"></i>
+                                <span>梅峰岛观景台：俯瞰群岛全景</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-map-marker text-blue-500 mr-2 mt-1"></i>
+                                <span>voco酒店泳池：270°湖景</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-map-marker text-blue-500 mr-2 mt-1"></i>
+                                <span>月光岛：浪漫主题拍照</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4 text-green-600">温泉拍照点</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-map-marker text-green-500 mr-2 mt-1"></i>
+                                <span>室外温泉池：山景背景</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-map-marker text-green-500 mr-2 mt-1"></i>
+                                <span>无边泳池：网红打卡点</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-map-marker text-green-500 mr-2 mt-1"></i>
+                                <span>巴厘岛风格建筑：异域风情</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden card-hover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4 text-pink-600">滑雪拍照点</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-map-marker text-pink-500 mr-2 mt-1"></i>
+                                <span>雪道起点：全景拍摄</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-map-marker text-pink-500 mr-2 mt-1"></i>
+                                <span>中级道：动感滑雪照</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-map-marker text-pink-500 mr-2 mt-1"></i>
+                                <span>山顶观景台：雪景全貌</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 购物推荐 -->
+    <section class="py-16 bg-gradient-to-r from-pink-500 to-purple-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold">购物推荐</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-shopping-bag text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">千岛湖鱼干</h3>
+                    <p class="text-white/80">银鱼干、麦穗鱼干，煮粥煲汤皆宜，营养丰富</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-leaf text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">千岛玉叶茶</h3>
+                    <p class="text-white/80">当地名茶，清香回甘，送礼佳品，品质上乘</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fa fa-tree text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">山核桃</h3>
+                    <p class="text-white/80">临安特产，香脆可口，营养丰富，老少皆宜</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 text-white py-12" data-doubao-translate-traverse-mark="1">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-doubao-translate-traverse-mark="1">
+        <div class="text-center" data-doubao-translate-traverse-mark="1">
+          <div class="flex items-center justify-center space-x-3 mb-4" data-doubao-translate-traverse-mark="1">
+            <i class="fa fa-ship text-primary text-2xl" data-doubao-translate-traverse-mark="1"></i>
+            <span class="text-2xl font-bold" data-doubao-translate-traverse-mark="1">千岛湖旅游攻略</span>
+          </div>
+          <p class="text-gray-400 mb-6" data-doubao-translate-traverse-mark="1">愿您的湖光山色之旅充满美好回忆</p>
+          <div class="flex justify-center space-x-6 mb-8" data-doubao-translate-traverse-mark="1">
+            <a
+              href="#overview"
+              class="text-gray-400 hover:text-primary transition-colors"
+              data-doubao-translate-traverse-mark="1"
+              >行程概览</a
+            >
+            <a
+              href="#itinerary"
+              class="text-gray-400 hover:text-primary transition-colors"
+              data-doubao-translate-traverse-mark="1"
+              >详细行程</a
+            >
+            <a
+              href="#accommodation"
+              class="text-gray-400 hover:text-primary transition-colors"
+              data-doubao-translate-traverse-mark="1"
+              >住宿推荐</a
+            >
+            <a
+              href="#food"
+              class="text-gray-400 hover:text-primary transition-colors"
+              data-doubao-translate-traverse-mark="1"
+              >美食攻略</a
+            >
+            <a
+              href="#transport"
+              class="text-gray-400 hover:text-primary transition-colors"
+              data-doubao-translate-traverse-mark="1"
+              >交通指南</a
+            >
+            <a
+              href="#tips"
+              class="text-gray-400 hover:text-primary transition-colors"
+              data-doubao-translate-traverse-mark="1"
+              >注意事项</a
+            >
+          </div>
+          <div class="border-t border-gray-800 pt-8" data-doubao-translate-traverse-mark="1">
+            <p class="text-gray-500 text-sm" data-doubao-translate-traverse-mark="1">
+              <i class="fa fa-calendar mr-2"></i>
+              3天2晚 | 南京→千岛湖→湍口温泉→大明山 | 山水温泉滑雪之旅
+            </p>
+            <p class="text-gray-600 text-xs mt-2" data-doubao-translate-traverse-mark="1" title="fx67ll.com">
+              <a
+                href="https://fx67ll.com"
+                target="_blank"
+                class="hover:text-accent transition-colors duration-300"
+                data-doubao-translate-traverse-mark="1"
+                >制作时间：2025年9月 | 祝您旅途愉快！</a
+              >
+            </p>
+            <p class="text-gray-600 text-xs mt-2" data-doubao-translate-traverse-mark="1">
+              <a
+                href="https://beian.miit.gov.cn/#/Integrated/index"
+                target="_blank"
+                class="hover:text-accent transition-colors duration-300"
+                data-doubao-translate-traverse-mark="1"
+                >皖ICP备18017174号</a
+              >
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('bg-white/95');
+                navbar.classList.remove('bg-white/90');
+            } else {
+                navbar.classList.add('bg-white/90');
+                navbar.classList.remove('bg-white/95');
+            }
+        });
+        
+        // 移动端菜单
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const closeMenu = document.getElementById('close-menu');
+        
+        function openMobileMenu() {
+            mobileMenu.classList.remove('translate-x-full');
+            mobileMenu.classList.add('translate-x-0');
+            mobileMenuOverlay.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('translate-x-full');
+            setTimeout(() => {
+                mobileMenuOverlay.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+        
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMenu.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        
+        // 移动菜单链接点击关闭菜单
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // 卡片悬停效果
+        const cards = document.querySelectorAll('.card-hover');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px)';
+                this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '';
+            });
+        });
+        
+        // 页面加载动画
+        window.addEventListener('load', function() {
+            document.body.classList.add('loaded');
+        });
+        
+        // 键盘导航支持
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
