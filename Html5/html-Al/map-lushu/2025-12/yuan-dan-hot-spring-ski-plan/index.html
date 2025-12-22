@@ -134,6 +134,45 @@
       html {
           scroll-behavior: smooth;
       }
+
+      /* 向上箭头动画 */
+      @keyframes bounceUp {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      /* 按钮悬停时的脉冲动画 */
+      @keyframes pulseGlow {
+        0%, 100% {
+          box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+        50% {
+          box-shadow: 0 10px 40px rgba(99, 102, 241, 0.6);
+        }
+      }
+
+      /* 确保按钮在最上层 */
+      #backToTop {
+          z-index: 9999 !important;
+      }
+
+      /* 移动端优化 */
+      @media (max-width: 768px) {
+          #backToTop {
+              bottom: 20px;
+              right: 20px;
+              width: 50px;
+              height: 50px;
+          }
+
+          #backToTop i {
+              font-size: 16px;
+          }
+      }
     </style>
   </head>
   <body class="font-sans text-gray-800 bg-gray-50">
@@ -225,7 +264,7 @@
             </div>
             <h3 class="text-xl font-bold mb-3">千岛湖</h3>
             <p class="text-gray-600 mb-4">1078座岛屿的壮美湖景，深度体验湖光山色</p>
-            <span class="text-blue-600 text-sm font-medium">中心湖区+东南湖区+绿道骑行</span>
+            <span class="text-blue-600 text-sm font-medium">中心湖区+绿道骑行</span>
           </div>
 
           <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 text-center card-hover">
@@ -297,21 +336,21 @@
 
             <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
               <div class="flex justify-between items-start mb-4">
-                <div class="font-bold text-lg">08:00 - 08:30</div>
+                <div class="font-bold text-lg">08:00 - 12:30</div>
                 <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">电动车出行</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">南京出发</h4>
               <p class="text-gray-600 mb-4">建议从沪蓉高速出发，走五桥转宁宣高速</p>
               <div class="flex flex-wrap gap-3 text-sm">
-                <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fa fa-clock-o mr-1"></i>车程4.5-5.5小时</span>
-                <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fa fa-road mr-1"></i>距离约400公里</span>
+                <span class="bg-gray-100 px-3 py-1 rounded-full"><i class="fa fa-road mr-1"></i>距离约365公里</span>
+                <span class="bg-purple-100 px-3 py-1 rounded-full"><i class="fa fa-clock-o mr-1"></i>车程4-4.5小时</span>
                 <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-bolt mr-1"></i>小米SU7 Max</span>
               </div>
             </div>
 
             <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
               <div class="flex justify-between items-start mb-4">
-                <div class="font-bold text-lg">13:00 - 16:00</div>
+                <div class="font-bold text-lg">13:00 - 15:30</div>
                 <span class="bg-cyan-100 text-cyan-800 text-xs px-3 py-1 rounded-full">游船游览</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">千岛湖中心湖区游览</h4>
@@ -346,7 +385,7 @@
                 </div>
               </div>
               <div class="flex flex-wrap gap-3 text-sm mt-4">
-                <span class="bg-orange-100 text-yellow-800 px-3 py-1 rounded-full"><i class="fa fa-car mr-1"></i>浪漫月光之旅</span>
+                <span class="bg-orange-100 text-yellow-800 px-3 py-1 rounded-full"><i class="fa fa-heart mr-1"></i>浪漫月光之旅</span>
                 <span class="bg-yellow-100 text-orange-800 px-3 py-1 rounded-full"><i class="fa fa-ship mr-1"></i>双人套票130元/2人</span>
               </div>
             </div>
@@ -360,13 +399,13 @@
               <p class="text-gray-600 mb-4">推荐餐厅：鱼味馆或淳圆外，必点千岛湖有机鱼头汤</p>
               <div class="flex flex-wrap gap-3 text-sm">
                 <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full"><i class="fa fa-cutlery mr-1"></i>人均100元</span>
-                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full"><i class="fa fa-star mr-1"></i>鱼头汤168元</span>
+                <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full"><i class="fa fa-star mr-1"></i>鱼头汤必尝</span>
               </div>
             </div>
 
             <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
               <div class="flex justify-between items-start mb-4">
-                <div class="font-bold text-lg">20:30 - 21:00</div>
+                <div class="font-bold text-lg">21:00</div>
                 <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">湖景房</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">抵达千岛湖，办理入住</h4>
@@ -392,7 +431,7 @@
             <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
               <div class="flex justify-between items-start mb-4">
                 <div class="font-bold text-lg">08:00 - 09:00</div>
-                <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">湖景早餐</span>
+                <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">湖景早餐</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">酒店早餐</h4>
               <p class="text-gray-600 mb-4">voco酒店湖景早餐，边吃边赏湖景</p>
@@ -402,7 +441,7 @@
               </div>
             </div>
 
-            <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+            <!-- <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
               <div class="flex justify-between items-start mb-4">
                 <div class="font-bold text-lg">09:30 - 10:30</div>
                 <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">自然氧吧</span>
@@ -427,11 +466,11 @@
                 <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full"><i class="fa fa-ticket mr-1"></i>门票40元</span>
                 <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-leaf mr-1"></i>天然氧吧</span>
               </div>
-            </div>
+            </div> -->
 
             <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
               <div class="flex justify-between items-start mb-4">
-                <div class="font-bold text-lg">10:30 - 12:30</div>
+                <div class="font-bold text-lg">09:30 - 11:30</div>
                 <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">绿道骑行</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">千岛湖绿道骑行体验</h4>
@@ -459,7 +498,7 @@
 
             <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
               <div class="flex justify-between items-start mb-4">
-                <div class="font-bold text-lg">12:30 - 13:30</div>
+                <div class="font-bold text-lg">12:00 - 13:00</div>
                 <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">湖景午餐</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">千岛湖农家菜</h4>
@@ -473,11 +512,11 @@
 
             <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
               <div class="flex justify-between items-start mb-4">
-                <div class="font-bold text-lg">14:00 - 15:00</div>
+                <div class="font-bold text-lg">13:30 - 15:00</div>
                 <span class="bg-yellow-100 text-yellow-800 text-xs px-3 py-1 rounded-full">山路驾驶</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">前往湍口温泉</h4>
-              <p class="text-gray-600 mb-4">车程约1小时，距离约48公里，沿途欣赏山区美景</p>
+              <p class="text-gray-600 mb-4">车程约1.5小时，距离约70公里，沿途欣赏山区美景</p>
               <div class="flex flex-wrap gap-3 text-sm">
                 <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full"><i class="fa fa-road mr-1"></i>山路驾驶</span>
                 <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full"><i class="fa fa-exclamation-triangle mr-1"></i>注意安全</span>
@@ -491,7 +530,7 @@
                 <span class="bg-purple-100 text-purple-800 text-xs px-3 py-1 rounded-full">温泉酒店</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">办理入住，休息</h4>
-              <p class="text-gray-600 mb-4">入住湍口众安汇尊温泉度假村，稍作休息，准备享受温泉</p>
+              <p class="text-gray-600 mb-4">入住湍口众安汇尊温泉度假村，参观游玩度假酒店设施，稍作休息，准备享受温泉</p>
               <div class="flex flex-wrap gap-3 text-sm">
                 <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full"><i class="fa fa-home mr-1"></i>温泉度假</span>
                 <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-bed mr-1"></i>舒适客房</span>
@@ -502,7 +541,7 @@
             <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
               <div class="flex justify-between items-start mb-4">
                 <div class="font-bold text-lg">18:00 - 19:00</div>
-                <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">自助晚餐</span>
+                <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">自助晚餐</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">享用酒店自助晚餐</h4>
               <p class="text-gray-600 mb-4">度假酒店自助晚餐，品种丰富，各类精品餐点</p>
@@ -519,11 +558,12 @@
                 <span class="bg-red-100 text-red-800 text-xs px-3 py-1 rounded-full">无限次</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">温泉体验</h4>
-              <p class="text-gray-600 mb-4">50多个温泉池任选，推荐玫瑰池、红酒池、牛奶池，放松身心</p>
+              <p class="text-gray-600 mb-4">源自 1300 年历史的 "芦荻泉"（古称 "天目山温泉"），属碳酸钙型热矿泉，富含氡元素，医疗价值极高</p>
               <div class="flex flex-wrap gap-3 text-sm">
                 <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full"><i class="fa fa-thermometer-half mr-1"></i>无限次</span>
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-tint mr-1"></i>水乐园</span>
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-tint mr-1"></i>无边泳池</span>
                 <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full"><i class="fa fa-star mr-1"></i>千年氡温泉</span>
+                <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full"><i class="fa fa-paw mr-1"></i>萌宠乐园</span>
               </div>
             </div>
           </div>
@@ -558,16 +598,16 @@
                 <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">高速直达</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">前往大明山滑雪场</h4>
-              <p class="text-gray-600 mb-4">车程约40分钟-1小时，高速直达，路况良好</p>
+              <p class="text-gray-600 mb-4">车程约1小时，路况非常良好的山路，沿途风景宜人</p>
               <div class="flex flex-wrap gap-3 text-sm">
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-road mr-1"></i>高速路段</span>
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-bolt mr-1"></i>快速直达</span>
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-tree mr-1"></i>浙江乡村路况良好</span>
+                <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full"><i class="fa fa-map-marked mr-1"></i>山路风景宜人</span>
               </div>
             </div>
 
             <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
               <div class="flex justify-between items-start mb-4">
-                <div class="font-bold text-lg">11:00 - 17:00</div>
+                <div class="font-bold text-lg">11:00 - 18:00</div>
                 <span class="bg-pink-100 text-pink-800 text-xs px-3 py-1 rounded-full">专业滑雪</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">大明山滑雪体验</h4>
@@ -599,9 +639,9 @@
                 <span class="bg-green-100 text-green-800 text-xs px-3 py-1 rounded-full">安全驾驶</span>
               </div>
               <h4 class="text-xl font-semibold mb-2">开始返程南京</h4>
-              <p class="text-gray-600 mb-4">预计车程：4-4.5小时，约22:00-22:30抵达南京</p>
+              <p class="text-gray-600 mb-4">预计车程：3-3.5小时，约22:00-22:30抵达南京</p>
               <div class="flex flex-wrap gap-3 text-sm">
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-clock-o mr-1"></i>4-4.5小时</span>
+                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full"><i class="fa fa-clock-o mr-1"></i>3-3.5小时</span>
                 <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full"><i class="fa fa-exclamation-triangle mr-1"></i>注意安全</span>
                 <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-bolt mr-1"></i>电动车返程</span>
               </div>
@@ -840,11 +880,11 @@
                 <p class="text-gray-700 mb-4">南京市区 → 宁宣高速(S55) → 宣桐高速(S05) → 溧宁高速(G40) → 千岛湖出口</p>
                 <div class="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div class="text-2xl font-bold text-blue-600">400</div>
+                    <div class="text-2xl font-bold text-blue-600">365</div>
                     <div class="text-sm text-gray-600">公里</div>
                   </div>
                   <div>
-                    <div class="text-2xl font-bold text-blue-600">4.5-5.5</div>
+                    <div class="text-2xl font-bold text-blue-600">4-4.5</div>
                     <div class="text-sm text-gray-600">小时</div>
                   </div>
                   <div>
@@ -860,7 +900,7 @@
                 <p class="text-gray-700 mb-4">千岛湖镇 → 千汾线 → 昌文线 → 湍口镇</p>
                 <div class="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div class="text-2xl font-bold text-green-600">48</div>
+                    <div class="text-2xl font-bold text-green-600">70</div>
                     <div class="text-sm text-gray-600">公里</div>
                   </div>
                   <div>
@@ -879,10 +919,10 @@
 
               <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6">
                 <h4 class="text-lg font-semibold mb-3">湍口温泉 → 大明山</h4>
-                <p class="text-gray-700 mb-4">湍口镇 → G56杭瑞高速 → 白果出口 → 大明山景区</p>
+                <p class="text-gray-700 mb-4">湍口镇 → 昌文线 → 和白线 → 大明山景区</p>
                 <div class="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div class="text-2xl font-bold text-orange-600">50</div>
+                    <div class="text-2xl font-bold text-orange-600">45</div>
                     <div class="text-sm text-gray-600">公里</div>
                   </div>
                   <div>
@@ -890,11 +930,11 @@
                     <div class="text-sm text-gray-600">小时</div>
                   </div>
                   <div>
-                    <div class="text-2xl font-bold text-orange-600">高速</div>
+                    <div class="text-2xl font-bold text-orange-600">山路</div>
                     <div class="text-sm text-gray-600">路况</div>
                   </div>
                 </div>
-                <div class="mt-4 text-sm text-blue-600 flex items-center justify-center"><i class="fa fa-car mr-2"></i>快速直达</div>
+                <div class="mt-4 text-sm text-blue-600 flex items-center justify-center"><i class="fa fa-map-marked mr-2"></i>沿途风景宜人</div>
               </div>
 
               <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-6">
@@ -902,11 +942,11 @@
                 <p class="text-gray-700 mb-4">大明山 → 杭瑞高速(G56) → 宣桐高速(S05) → 宁宣高速(S55) → 南京市区</p>
                 <div class="grid grid-cols-3 gap-4 text-center">
                   <div>
-                    <div class="text-2xl font-bold text-yellow-600">400</div>
+                    <div class="text-2xl font-bold text-yellow-600">300</div>
                     <div class="text-sm text-gray-600">公里</div>
                   </div>
                   <div>
-                    <div class="text-2xl font-bold text-yellow-600">2.5-3</div>
+                    <div class="text-2xl font-bold text-yellow-600">3-3.5</div>
                     <div class="text-sm text-gray-600">小时</div>
                   </div>
                   <div>
@@ -1347,6 +1387,27 @@
       </div>
     </section>
 
+    <!-- 一键返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-8 right-8 w-14 h-14 rounded-full shadow-xl transition-all duration-300 transform scale-0 z-50 group">
+      <!-- 背景渐变 -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-vibrant-blue to-vibrant-purple rounded-full opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+      ></div>
+
+      <!-- 微光效果 -->
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-vibrant-purple/30 to-vibrant-blue/30 rounded-full animate-pulse-slow opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      ></div>
+
+      <!-- 边框效果 -->
+      <div class="absolute inset-0 border-2 border-white/20 rounded-full group-hover:border-white/40 transition-all duration-300"></div>
+
+      <!-- 图标 -->
+      <div class="relative flex items-center justify-center w-full h-full">
+        <i class="fa fa-chevron-up text-white text-lg transform group-hover:-translate-y-1 transition-transform duration-300"></i>
+      </div>
+    </button>
+
     <!-- 页脚 -->
     <footer class="bg-gray-900 text-white py-12" data-doubao-translate-traverse-mark="1">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" data-doubao-translate-traverse-mark="1">
@@ -1476,6 +1537,77 @@
           if (e.key === 'Escape') {
               closeMobileMenu();
           }
+      });
+
+      // 返回顶部功能 ================================================
+
+      // 获取返回顶部按钮
+      const backToTop = document.getElementById('backToTop');
+
+      // 滚动显示/隐藏按钮
+      window.addEventListener('scroll', function() {
+          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+
+          if (winScroll > 300) {
+              backToTop.classList.remove('scale-0');
+              backToTop.classList.add('scale-100');
+          } else {
+              backToTop.classList.remove('scale-100');
+              backToTop.classList.add('scale-0');
+          }
+
+          // 增强效果：根据滚动位置变化透明度
+          const scrollProgress = Math.min(winScroll / 1000, 1);
+          backToTop.style.opacity = 0.7 + scrollProgress * 0.3;
+      });
+
+      // 点击返回顶部
+      backToTop.addEventListener('click', function() {
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+          });
+
+          // 点击反馈效果
+          this.style.transform = 'scale(0.95)';
+          setTimeout(() => {
+              this.style.transform = '';
+          }, 150);
+      });
+
+      // 按钮悬停效果
+      backToTop.addEventListener('mouseenter', function() {
+          this.style.animation = 'pulseGlow 2s ease-in-out infinite';
+          const icon = this.querySelector('i');
+          if (icon) {
+              icon.style.animation = 'bounceUp 1s ease-in-out infinite';
+          }
+      });
+
+      backToTop.addEventListener('mouseleave', function() {
+          this.style.animation = '';
+          const icon = this.querySelector('i');
+          if (icon) {
+              icon.style.animation = '';
+          }
+      });
+
+      // 键盘快捷键支持
+      document.addEventListener('keydown', function(e) {
+          // 按 Home 键返回顶部
+          if (e.key === 'Home') {
+              e.preventDefault();
+              window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth'
+              });
+          }
+      });
+
+      // 页面加载完成后的初始化
+      window.addEventListener('load', function() {
+          // 确保按钮初始隐藏
+          backToTop.classList.add('scale-0');
       });
     </script>
   </body>
