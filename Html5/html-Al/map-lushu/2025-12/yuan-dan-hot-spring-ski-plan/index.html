@@ -52,6 +52,8 @@
                       'slideUp': 'slideUp 0.6s ease-out',
                       'slideIn': 'slideIn 0.7s ease-out',
                       'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                      'float': 'float 3s ease-in-out infinite',
+                      'glow': 'glow 2s ease-in-out infinite alternate',
                   },
                   keyframes: {
                       fadeIn: {
@@ -65,6 +67,14 @@
                       slideIn: {
                           '0%': { transform: 'translateX(-30px)', opacity: '0' },
                           '100%': { transform: 'translateX(0)', opacity: '1' },
+                      },
+                      float: {
+                          '0%, 100%': { transform: 'translateY(0px)' },
+                          '50%': { transform: 'translateY(-10px)' },
+                      },
+                      glow: {
+                          '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.5)' },
+                          '100%': { boxShadow: '0 0 30px rgba(99, 102, 241, 0.8)' },
                       }
                   }
               }
@@ -100,6 +110,16 @@
           }
           .text-shadow-lg {
               text-shadow: 0 4px 8px rgba(0,0,0,0.25);
+          }
+          .glass-effect {
+              @apply bg-white/10 backdrop-blur-lg border border-white/20;
+          }
+          .map-marker {
+              @apply relative w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold text-lg transform hover:scale-110 transition-transform duration-300;
+          }
+          .map-marker::after {
+              content: '';
+              @apply absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-primary;
           }
       }
     </style>
@@ -172,6 +192,59 @@
           #backToTop i {
               font-size: 16px;
           }
+      }
+
+      /* 路线图动画效果 */
+      .route-map {
+          position: relative;
+          overflow: hidden;
+      }
+      .route-map img {
+          transition: transform 0.5s ease;
+      }
+      .route-map:hover img {
+          transform: scale(1.02);
+      }
+      .route-map::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+          opacity: 0;
+          transition: opacity 0.3s ease;
+      }
+      .route-map:hover::after {
+          opacity: 1;
+      }
+
+      /* 图标动画效果 */
+      .icon-animation {
+          animation: float 3s ease-in-out infinite;
+      }
+      .icon-animation:hover {
+          animation: glow 2s ease-in-out infinite alternate;
+      }
+
+      /* 渐变边框效果 */
+      .gradient-border {
+          position: relative;
+          border-radius: 1rem;
+          overflow: hidden;
+      }
+      .gradient-border::before {
+          content: '';
+          position: absolute;
+          inset: -2px;
+          background: linear-gradient(45deg, #3B82F6, #8B5CF6, #EC4899, #3B82F6);
+          background-size: 200%;
+          border-radius: 1rem;
+          z-index: -1;
+          animation: border-glow 3s linear infinite;
+      }
+      @keyframes border-glow {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
       }
     </style>
   </head>
@@ -655,6 +728,97 @@
                 <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full"><i class="fa fa-bolt mr-1"></i>电动车返程</span>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 路线地图 -->
+    <section id="route-map" class="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-4 gradient-text">完整路线地图</h2>
+          <p class="text-gray-600 text-lg max-w-3xl mx-auto">南京 → 千岛湖 → 湍口温泉 → 大明山 → 南京，全程约800公里的精彩旅程</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="route-map gradient-border bg-white p-4 rounded-2xl shadow-xl">
+            <img
+              src="./yuan-dan-hot-spring-ski-plan_files/static/imgs/5.png"
+              alt="千岛湖温泉滑雪之旅路线图"
+              class="w-full h-auto rounded-xl"
+            />
+          </div>
+
+          <div class="space-y-8">
+            <div class="bg-white rounded-xl p-6 shadow-lg card-hover">
+              <h3 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fa fa-route text-blue-500 mr-3 text-2xl"></i>
+                路线亮点
+              </h3>
+              <div class="space-y-4">
+                <div class="flex items-start">
+                  <div class="map-marker mr-4" style="background-color: #2d4fbc;">1</div>
+                  <div>
+                    <h4 class="font-semibold text-lg">南京出发</h4>
+                    <p class="text-gray-600">沪蓉高速转宁宣高速，全程高速直达</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="map-marker mr-4" style="background-color: #3b82f6;">2</div>
+                  <div>
+                    <h4 class="font-semibold text-lg">千岛湖游览</h4>
+                    <p class="text-gray-600">中心湖区游船，绿道骑行，湖光山色</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="map-marker mr-4" style="background-color: #60a5fa;">3</div>
+                  <div>
+                    <h4 class="font-semibold text-lg">湍口温泉</h4>
+                    <p class="text-gray-600">千年氡温泉，放松身心，享受温暖</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="map-marker mr-4" style="background-color: #93c5fd;">4</div>
+                  <div>
+                    <h4 class="font-semibold text-lg">大明山滑雪</h4>
+                    <p class="text-gray-600">江南最佳滑雪场，体验冰雪乐趣</p>
+                  </div>
+                </div>
+                <div class="flex items-start">
+                  <div class="map-marker mr-4" style="background-color: #c2ccef;">5</div>
+                  <div>
+                    <h4 class="font-semibold text-lg">安全返程</h4>
+                    <p class="text-gray-600">杭瑞高速转宁宣高速，顺利返回南京</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- <div class="bg-gradient-to-r from-blue-500 to-purple-600 rounded-xl p-6 text-white">
+              <h3 class="text-xl font-bold mb-4 flex items-center">
+                <i class="fa fa-info-circle mr-3"></i>
+                路线说明
+              </h3>
+              <ul class="space-y-2 text-white/90">
+                <li class="flex items-center">
+                  <i class="fa fa-check-circle mr-2"></i>
+                  <span>总里程：约800公里，适合周末短途旅行</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fa fa-check-circle mr-2"></i>
+                  <span>驾驶时间：单程3.5-4.5小时，路况良好</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fa fa-check-circle mr-2"></i>
+                  <span>充电便利：沿途服务区均有充电桩</span>
+                </li>
+                <li class="flex items-center">
+                  <i class="fa fa-check-circle mr-2"></i>
+                  <span>风景优美：山区路段景色宜人，适合拍照</span>
+                </li>
+              </ul>
+            </div> -->
           </div>
         </div>
       </div>
@@ -1618,6 +1782,83 @@
           // 确保按钮初始隐藏
           backToTop.classList.add('scale-0');
       });
+
+      // 添加页面加载动画
+      window.addEventListener('load', function() {
+          // 添加淡入效果
+          document.body.style.opacity = '0';
+          let opacity = 0;
+          const fadeIn = setInterval(function() {
+              if (opacity >= 1) {
+                  clearInterval(fadeIn);
+              }
+              document.body.style.opacity = opacity;
+              opacity += 0.1;
+          }, 50);
+      });
+
+      // 添加元素进入视口时的动画效果
+      const observerOptions = {
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  entry.target.style.opacity = '1';
+                  entry.target.style.transform = 'translateY(0)';
+              }
+          });
+      }, observerOptions);
+
+      // 为所有卡片添加进入动画
+      const animatedElements = document.querySelectorAll('.card-hover, .gradient-border');
+      animatedElements.forEach(element => {
+          element.style.opacity = '0';
+          element.style.transform = 'translateY(30px)';
+          element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          observer.observe(element);
+      });
+
+      // 地图交互效果
+      const routeMap = document.querySelector('.route-map');
+      if (routeMap) {
+          let isDragging = false;
+          let startX, startY, scrollLeft, scrollTop;
+
+          routeMap.addEventListener('mousedown', function(e) {
+              isDragging = true;
+              startX = e.pageX - routeMap.offsetLeft;
+              startY = e.pageY - routeMap.offsetTop;
+              scrollLeft = routeMap.scrollLeft;
+              scrollTop = routeMap.scrollTop;
+              routeMap.style.cursor = 'grabbing';
+          });
+
+          routeMap.addEventListener('mouseleave', function() {
+              isDragging = false;
+              routeMap.style.cursor = 'grab';
+          });
+
+          routeMap.addEventListener('mouseup', function() {
+              isDragging = false;
+              routeMap.style.cursor = 'grab';
+          });
+
+          routeMap.addEventListener('mousemove', function(e) {
+              if (!isDragging) return;
+              e.preventDefault();
+              const x = e.pageX - routeMap.offsetLeft;
+              const y = e.pageY - routeMap.offsetTop;
+              const walkX = (x - startX) * 1.5;
+              const walkY = (y - startY) * 1.5;
+              routeMap.scrollLeft = scrollLeft - walkX;
+              routeMap.scrollTop = scrollTop - walkY;
+          });
+
+          routeMap.style.cursor = 'grab';
+      }
     </script>
   </body>
 </html>
