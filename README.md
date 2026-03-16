@@ -17,6 +17,9 @@ A man without distant care must have near sorrow！
 |  css3博客文章  |  css3练习  |  css3学习项目  |
 
 
+## 0.2.2.20260316  
+* 添加之前一直待处理的动效插件      
+
 ## 0.2.2.20251219  
 * 添加AI生成的元旦温泉滑雪计划路书    
 
