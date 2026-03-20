@@ -12,13 +12,20 @@ A man without distant care must have near sorrow！
 
 
 ### CSS3次级目录说明
-|  css3-blog   | css3-practice  |  css3-project  |
-|  :----:  |  :----:  |  :----:  |
-|  css3博客文章  |  css3练习  |  css3学习项目  |
+|  css3-blog   |  css3-plugin  | css3-practice  |  css3-project  |
+|  :----:  |  :----:  |  :----:  |  :----:  |
+|  css3博客文章  |  css3插件  |  css3练习  |  css3学习项目  |
 
+
+## 0.2.3.20260320
+* 整体插件和学习项目文件  
+* 新增文字动效插件源码  
+* 新增高速运动插件源码  
+* 新增相册瀑布流插件源码  
+* 新增相册动画插件源码  
 
 ## 0.2.2.20260316  
-* 添加之前一直待处理的动效插件      
+* 新增动效插件源码  
 
 ## 0.2.2.20251219  
 * 添加AI生成的元旦温泉滑雪计划路书    
