@@ -1,0 +1,302 @@
+<!doctype html>
+<html style="font-size: 100px;">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="author" content="www.yzszyy.com" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="keywords" content="jzxfy" />
+    <meta name="description" content="jzxfy" />
+    <title>jzxfy</title>
+    <link rel="stylesheet" type="text/css" href="./jzxfy_files/global.css" />
+
+    <!-- 全局滚动条去除样式：隐藏所有滚动条，保留滚动功能，防止水平溢出 -->
+    <style>
+      /* 彻底隐藏原生滚动条（WebKit/Blink） */
+      ::-webkit-scrollbar {
+          width: 0 !important;
+          height: 0 !important;
+          background: transparent !important;
+          display: none !important;
+      }
+
+      /* Firefox 滚动条隐藏 */
+      html {
+          scrollbar-width: none !important;
+          overflow-x: hidden !important;
+      }
+
+      body {
+          scrollbar-width: none !important;      /* Firefox */
+          -ms-overflow-style: none !important;   /* IE/Edge 隐藏滚动条 */
+          overflow-y: auto !important;           /* 允许垂直滚动，但滚动条不可见 */
+          overflow-x: hidden !important;         /* 彻底禁用水平滚动条 */
+          position: relative;
+          width: 100%;
+          height: auto;
+          margin: 0;
+          padding: 0;
+      }
+
+      /* 覆盖 mCustomScrollbar 自定义滚动条，强制隐藏 */
+      .mCSB_scrollTools,
+      .mCSB_1_scrollbar,
+      .mCSB_2_scrollbar,
+      .mCSB_draggerContainer,
+      .mCustomScrollBox .mCSB_scrollTools,
+      .mCSB_inside > .mCSB_scrollTools {
+          display: none !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          width: 0 !important;
+          height: 0 !important;
+      }
+
+      /* 确保任何可能产生滚动条的容器都隐藏滚动条，但保留滚动能力 */
+      .container,
+      .swiper-container,
+      .swiper-wrapper,
+      .swiper-slide,
+      .yyqy2,
+      .info1,
+      div[class*="scroll"],
+      div[class*="Scroll"] {
+          overflow-y: visible !important;
+          overflow-x: hidden !important;
+      }
+
+      /* 表格强制自适应宽度，防止水平溢出产生滚动条 */
+      table {
+          width: 100% !important;
+          max-width: 100% !important;
+          table-layout: fixed !important;
+          border-collapse: collapse !important;
+          word-break: break-word !important;
+          display: table;
+          box-sizing: border-box;
+      }
+
+      /* 单元格内容换行，防止撑开表格 */
+      td, th {
+          word-break: break-word !important;
+          word-wrap: break-word !important;
+          white-space: normal !important;
+          overflow-wrap: break-word;
+          padding: 8px 4px;
+          font-size: 14px;
+      }
+
+      /* 保证整体布局无横向溢出 */
+      body, .container, .swiper-container, .swiper-slide, .yyqy2, .item, .info1 {
+          max-width: 100vw;
+          overflow-x: hidden !important;
+      }
+
+      /* 让内容区域可以自然滚动，滚动条完全不显示 */
+      .info1 {
+          overflow-y: auto;
+          overflow-x: hidden;
+          -webkit-overflow-scrolling: touch;
+          scrollbar-width: none;
+      }
+
+      /* 隐藏任何可能生成滚动条的额外元素 */
+      .mCustomScrollbar {
+          overflow: auto !important;
+      }
+
+      /* 确保所有父级不会裁剪滚动内容，但滚动条隐藏 */
+      html, body {
+          height: auto;
+          min-height: 100%;
+      }
+
+      /* 调整表格字号，手机端易读，不影响布局 */
+      .STYLE1, td, th, .info1 p, .info1 span {
+          font-size: 14px;
+          line-height: 1.4;
+      }
+
+      /* 强制移除任何由插件生成的水平滚动条痕迹 */
+      .swiper-container-horizontal {
+          overflow-x: hidden !important;
+      }
+
+      /* 保持申请表内容完整显示，无滚动条干扰 */
+      .yyqy2 .item.on .info1 {
+          padding-bottom: 20px;
+      }
+    </style>
+
+    <!-- 注入脚本: 确保页面加载后再次禁用任何可能产生的滚动条元素，并修复插件导致的滚动条 -->
+    <script>
+      (function() {
+          // 确保页面完全加载后彻底隐藏所有滚动条相关元素（处理动态生成的滚动条）
+          function killScrollbars() {
+              // 隐藏 mCustomScrollbar 所有滚动条组件
+              var scrollTools = document.querySelectorAll('.mCSB_scrollTools, .mCSB_draggerContainer, .mCSB_dragger, .mCSB_1_scrollbar, .mCSB_2_scrollbar');
+              scrollTools.forEach(function(el) {
+                  if (el && el.style) {
+                      el.style.display = 'none';
+                      el.style.visibility = 'hidden';
+                      el.style.opacity = '0';
+                      el.style.width = '0';
+                      el.style.height = '0';
+                  }
+              });
+
+              // 对于任何可能生成滚动条的父容器，强制覆盖 overflow 样式
+              var containers = document.querySelectorAll('.mCustomScrollbar, .mCustomScrollBox, .container, .swiper-container, .yyqy2, .info1');
+              containers.forEach(function(cont) {
+                  if (cont) {
+                      cont.style.overflowY = 'auto';
+                      cont.style.overflowX = 'hidden';
+                      // 针对 webkit 和 firefox 隐藏滚动条
+                      cont.style.scrollbarWidth = 'none';
+                      // 针对webkit添加属性
+                      if (cont.style.webkitScrollbar) {
+                          cont.style.webkitScrollbar = 'none';
+                      }
+                  }
+              });
+
+              // 彻底隐藏 body 和 html 的滚动条痕迹
+              document.body.style.overflowX = 'hidden';
+              document.body.style.overflowY = 'auto';
+              document.documentElement.style.overflowX = 'hidden';
+              document.documentElement.style.overflowY = 'auto';
+              document.body.style.scrollbarWidth = 'none';
+              document.documentElement.style.scrollbarWidth = 'none';
+          }
+
+          // 页面加载完成后执行
+          if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', killScrollbars);
+          } else {
+              killScrollbars();
+          }
+          // 额外延迟，应对动态生成的滚动条
+          window.addEventListener('load', function() {
+              killScrollbars();
+              // 每隔一秒尝试修复，确保插件无残留滚动条
+              setTimeout(killScrollbars, 500);
+              setTimeout(killScrollbars, 1000);
+          });
+
+          // 监听DOM变化，如果发现新出现的滚动条控件立刻隐藏（防止插件延迟生成）
+          var observer = new MutationObserver(function(mutations) {
+              mutations.forEach(function(mutation) {
+                  if (mutation.addedNodes && mutation.addedNodes.length) {
+                      mutation.addedNodes.forEach(function(node) {
+                          if (node.nodeType === 1) { // 元素节点
+                              if (node.classList && (node.classList.contains('mCSB_scrollTools') || node.classList.contains('mCSB_draggerContainer'))) {
+                                  node.style.display = 'none';
+                                  node.style.visibility = 'hidden';
+                              }
+                              // 检查子元素
+                              if (node.querySelectorAll) {
+                                  var tools = node.querySelectorAll('.mCSB_scrollTools, .mCSB_draggerContainer');
+                                  tools.forEach(function(el) {
+                                      el.style.display = 'none';
+                                      el.style.visibility = 'hidden';
+                                  });
+                              }
+                          }
+                      });
+                  }
+              });
+          });
+          observer.observe(document.body, { childList: true, subtree: true });
+      })();
+    </script>
+  </head>
+  <body>
+    <div style="padding: 20px 40px;">
+      <div class="yyqy2">
+        <div class="item on">
+          <div class="info1">
+            <p style="text-align: center;"><strong>扬州市基本医疗保险门诊特殊病种申请表 </strong><br />编号：</p>
+            <p><br /></p>
+            <table width="90%" border="1" align="center" cellspacing="0" bordercolor="#999" style="border-collapse:collapse">
+              <tbody>
+                <tr class="firstRow">
+                  <td height="40" colspan="2" align="center" valign="center"><span class="STYLE1">患者单位</span></td>
+                  <td height="40" colspan="3" valign="center"><span class="STYLE1">　　　　　</span></td>
+                  <td height="40" colspan="2" valign="center"><span class="STYLE1">患者单位代码</span></td>
+                  <td height="40" colspan="2" valign="center"><span class="STYLE1">　</span></td>
+                  <td width="100" height="40" align="center" valign="center"><span class="STYLE1">患者社会保险号 </span></td>
+                  <td width="110" height="40" valign="center"><span class="STYLE1"></span></td>
+                </tr>
+                <tr>
+                  <td height="40" colspan="2" align="center" valign="center"><span class="STYLE1">患者姓名 </span></td>
+                  <td width="130" height="40" valign="center"><span class="STYLE1">　　　　　　　</span></td>
+                  <td height="40" colspan="2" valign="center"><span class="STYLE1">公民身份证号</span></td>
+                  <td height="40" colspan="4" valign="center"><span class="STYLE1"></span></td>
+                  <td width="100" height="40" align="center" valign="center"><span class="STYLE1">人员类别 </span></td>
+                  <td width="110" height="40" valign="center"><span class="STYLE1">　　</span></td>
+                </tr>
+                <tr>
+                  <td height="40" colspan="2" align="center" valign="center"><span class="STYLE1">申请医院 </span></td>
+                  <td valign="center" colspan="7"><span class="STYLE1">　　</span></td>
+                  <td width="100" align="center" valign="center"><span class="STYLE1">科别</span></td>
+                  <td width="110" valign="center"><span class="STYLE1">　　</span></td>
+                </tr>
+                <tr>
+                  <td height="80" colspan="11" valign="center"><span class="STYLE1">　病情摘要： </span></td>
+                </tr>
+                <tr>
+                  <td height="80" colspan="11" valign="center"><span class="STYLE1">　申请病种： </span></td>
+                </tr>
+                <tr>
+                  <td height="80" colspan="11" valign="center"><span class="STYLE1">　诊断依据： </span></td>
+                </tr>
+                <tr>
+                  <td height="40" colspan="2" align="center" valign="center"><span class="STYLE1">主治医生签名 </span></td>
+                  <td valign="center" colspan="2"><span class="STYLE1">　　</span></td>
+                  <td colspan="3" align="center" valign="center"><span class="STYLE1">科主任签名 </span></td>
+                  <td valign="center" colspan="2"><span class="STYLE1"></span></td>
+                  <td width="93" align="center" valign="center"><span class="STYLE1">患者（家属）签名 </span></td>
+                  <td width="39" valign="center"><span class="STYLE1">　　</span></td>
+                </tr>
+                <tr>
+                  <td width="110" align="center" valign="center">
+                    <span class="STYLE1">医院 <br />审批 <br />意见 <br />（盖章） </span>
+                  </td>
+                  <td valign="center" colspan="4">
+                    <span class="STYLE1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</span>
+                    <p class="STYLE1" style="text-align:right;"><br /></p>
+                    <p class="STYLE1" style="text-align:right;">年 &nbsp;月 &nbsp;日</p>
+                  </td>
+                  <td colspan="3" align="center" valign="center">
+                    <span class="STYLE1">社保 <br />中心 <br />审批 <br />意见 </span>
+                  </td>
+                  <td valign="center" colspan="3">
+                    <span class="STYLE1">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</span>
+                    <p class="STYLE1" style="text-align:right;">年 &nbsp;月 &nbsp;日</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td valign="center" colspan="11">
+                    <span class="STYLE1">
+                      注：1、此表一式三份，由申请人和医院填写，申请人、定点医院、社保中心各一份。 <br />
+                      &nbsp; &nbsp; &nbsp;2、此表为医疗费用报销的重要凭证，有效期为一年（上年7月1日至次年6月30日）。 <br />
+                      &nbsp; &nbsp;
+                      &nbsp;3、凡申请特殊病种的参保人员。必须持病史资料（包括病历、出院记录、检查和化验报告单）及近期（2个月内）检查、化验单。
+                      <br />
+                      &nbsp; &nbsp; &nbsp;4、参保者在一个结算年度内只限申报一种特
+                    </span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <p><br /></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
