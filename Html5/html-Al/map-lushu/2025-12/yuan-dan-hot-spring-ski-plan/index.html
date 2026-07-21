@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" class="no-js">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/v4-shims.min.css" /> -->
 
-    <script src="./yuan-dan-hot-spring-ski-plan_files/yuan-dan-hot-spring-ski-plan_3.4.17.js"></script>
+    <!-- 预加载主图标字体（fa-solid 最常用），让 Font Awesome 图标尽快显示 -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="./yuan-dan-hot-spring-ski-plan_files/static/fonts/fa-solid-900.woff2"
+      crossorigin
+    />
+    <!-- 预编译 Tailwind CSS（30KB，含本页全部用到的类 + 自定义工具类），作为兜底立即加载 -->
+    <link rel="stylesheet" href="./yuan-dan-hot-spring-ski-plan_files/tailwind-precompiled.css" />
+    <!-- Tailwind Play 运行时（407KB）改为 defer：有预编译 CSS 兜底，运行时后台处理不阻塞渲染 -->
+    <script defer src="./yuan-dan-hot-spring-ski-plan_files/yuan-dan-hot-spring-ski-plan_3.4.17.js"></script>
     <link rel="stylesheet" href="./yuan-dan-hot-spring-ski-plan_files/all.min.css" />
     <link rel="stylesheet" href="./yuan-dan-hot-spring-ski-plan_files/v4-shims.min.css" />
 
@@ -246,6 +257,97 @@
           50% { background-position: 100% 50%; }
           100% { background-position: 0% 50%; }
       }
+
+      /* ===== 增强交互动效（保持紫蓝渐变风格） ===== */
+
+      /* 导航菜单项：下划线滑入 + 悬停上浮 */
+      #navbar .hidden.md\:flex > a {
+          position: relative;
+          transition: color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+      #navbar .hidden.md\:flex > a::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: -6px;
+          height: 2px;
+          width: 100%;
+          background: linear-gradient(90deg, #3B82F6, #8B5CF6);
+          border-radius: 2px;
+          transform: scaleX(0);
+          transform-origin: center;
+          transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      #navbar .hidden.md\:flex > a:hover {
+          transform: translateY(-2px);
+      }
+      #navbar .hidden.md\:flex > a:hover::after {
+          transform: scaleX(1);
+      }
+      /* 激活态：滚动到对应区域时下划线常驻 + 文字高亮 */
+      #navbar .hidden.md\:flex > a.active {
+          color: #6366F1 !important;
+          font-weight: 600;
+          transform: translateY(-2px);
+      }
+      #navbar .hidden.md\:flex > a.active::after {
+          transform: scaleX(1);
+      }
+
+      /* 卡片错落入场 */
+      .reveal {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+          transition-delay: calc(var(--i, 0) * 80ms);
+          will-change: opacity, transform;
+      }
+      .reveal.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+      /* 卡片内图片悬停放大（裁剪在卡片内） */
+      .card-hover {
+          overflow: hidden;
+      }
+      .card-hover > .relative > img,
+      .card-hover > img {
+          transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .card-hover:hover > .relative > img,
+      .card-hover:hover > img {
+          transform: scale(1.08);
+      }
+      /* 但 card-hover 自带 hover:scale-105 会让整卡放大，图片放大叠加过度 —— 仅对含图卡片禁用整卡 scale */
+      .card-hover:has(img):hover {
+          transform: translateY(-8px) !important;
+      }
+
+      /* 回顶按钮阅读进度环 */
+      #backToTop .progress-ring {
+          position: absolute;
+          inset: 0;
+          border-radius: 9999px;
+          background: conic-gradient(from 0deg, #BAE6FD, #7DD3FC, #BAE6FD var(--p, 0%), rgba(255,255,255,0) 0);
+          -webkit-mask: radial-gradient(circle, transparent 60%, #000 62%);
+                  mask: radial-gradient(circle, transparent 60%, #000 62%);
+          z-index: 1;
+          pointer-events: none;
+      }
+
+      /* hero 背景缓慢呼吸缩放 */
+      .hero-bg {
+          animation: heroBreathe 14s ease-in-out infinite;
+      }
+      @keyframes heroBreathe {
+          0%, 100% { transform: scale(1); }
+          50% { transform: scale(1.06); }
+      }
+
+      /* JS 不可用兜底 */
+      .no-js .reveal { opacity: 1; transform: none; }
     </style>
   </head>
   <body class="font-sans text-gray-800 bg-gray-50">
@@ -305,7 +407,7 @@
     <!-- 英雄区域 -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-blue-900 via-purple-900 to-pink-800">
       <div class="absolute inset-0 bg-black/40 z-10"></div>
-      <img src="./yuan-dan-hot-spring-ski-plan_files/static/imgs/1.jpeg" alt="千岛湖美景" class="absolute inset-0 w-full h-full object-cover" />
+      <img fetchpriority="high" decoding="async" src="./yuan-dan-hot-spring-ski-plan_files/static/imgs/1.jpeg" alt="千岛湖美景" class="absolute inset-0 w-full h-full object-cover hero-bg" />
       <div class="relative z-20 text-center text-white px-4 max-w-4xl mx-auto">
         <h1 class="text-[clamp(2.5rem,6vw,4rem)] font-bold mb-6 leading-tight text-shadow-lg animate-fadeIn">千岛湖-湍口温泉-大明山滑雪</h1>
         <p class="text-[clamp(1.2rem,3vw,1.8rem)] mb-8 text-shadow animate-slideUp">3天2晚·千岛湖温泉滑雪之旅</p>
@@ -743,7 +845,7 @@
 
         <div class="grid lg:grid-cols-2 gap-12 items-center">
           <div class="route-map gradient-border bg-white p-4 rounded-2xl shadow-xl">
-            <img
+            <img loading="lazy" decoding="async"
               src="./yuan-dan-hot-spring-ski-plan_files/static/imgs/5.png"
               alt="千岛湖温泉滑雪之旅路线图"
               class="w-full h-auto rounded-xl"
@@ -835,7 +937,7 @@
         <div class="grid md:grid-cols-2 gap-8">
           <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
             <div class="relative">
-              <img src="./yuan-dan-hot-spring-ski-plan_files/static/imgs/2.jpeg" alt="voco千岛湖阳光大酒店" class="w-full h-64 object-cover" />
+              <img loading="lazy" decoding="async" src="./yuan-dan-hot-spring-ski-plan_files/static/imgs/2.jpeg" alt="voco千岛湖阳光大酒店" class="w-full h-64 object-cover" />
               <div class="absolute top-4 right-4 bg-blue-500 text-white text-xs px-3 py-1 rounded-full">推荐指数 9.2/10</div>
             </div>
             <div class="p-6">
@@ -864,7 +966,7 @@
 
           <div class="bg-white rounded-2xl shadow-lg overflow-hidden card-hover">
             <div class="relative">
-              <img src="./yuan-dan-hot-spring-ski-plan_files/static/imgs/3.jpeg" alt="湍口众安汇尊温泉度假村" class="w-full h-64 object-cover" />
+              <img loading="lazy" decoding="async" src="./yuan-dan-hot-spring-ski-plan_files/static/imgs/3.jpeg" alt="湍口众安汇尊温泉度假村" class="w-full h-64 object-cover" />
               <div class="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full">推荐指数 9.5/10</div>
             </div>
             <div class="p-6">
@@ -954,7 +1056,7 @@
           </div>
 
           <div class="relative">
-            <img src="./yuan-dan-hot-spring-ski-plan_files/static/imgs/4.jpeg" alt="千岛湖鱼头" class="w-full h-auto rounded-2xl shadow-xl" />
+            <img loading="lazy" decoding="async" src="./yuan-dan-hot-spring-ski-plan_files/static/imgs/4.jpeg" alt="千岛湖鱼头" class="w-full h-auto rounded-2xl shadow-xl" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent rounded-2xl"></div>
             <div class="absolute bottom-6 left-6 text-white">
               <h4 class="text-xl font-bold mb-2">地道湖鲜</h4>
@@ -1567,6 +1669,9 @@
         class="absolute inset-0 bg-gradient-to-r from-vibrant-blue to-vibrant-purple rounded-full opacity-90 group-hover:opacity-100 transition-opacity duration-300"
       ></div>
 
+      <!-- 阅读进度环 -->
+      <span class="progress-ring" aria-hidden="true"></span>
+
       <!-- 微光效果 -->
       <div
         class="absolute inset-0 bg-gradient-to-r from-vibrant-purple/30 to-vibrant-blue/30 rounded-full animate-pulse-slow opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -1628,237 +1733,215 @@
 
     <!-- JavaScript -->
     <script>
-      // 导航栏滚动效果
-      window.addEventListener('scroll', function() {
-          const navbar = document.getElementById('navbar');
-          if (window.scrollY > 100) {
-              navbar.classList.add('bg-white/95');
-              navbar.classList.remove('bg-white/90');
-          } else {
-              navbar.classList.add('bg-white/90');
-              navbar.classList.remove('bg-white/95');
+      (function () {
+        'use strict';
+
+        // 标记 JS 可用（移除 no-js，使 reveal 初始隐藏生效）
+        document.documentElement.classList.remove('no-js');
+
+        var navbar = document.getElementById('navbar');
+        var backToTop = document.getElementById('backToTop');
+        var progressRing = backToTop ? backToTop.querySelector('.progress-ring') : null;
+
+        // ===== rAF 节流的统一滚动处理 =====
+        var ticking = false;
+        function onScroll() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function () {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight || 1;
+            var pct = (winScroll / height) * 100;
+
+            // 导航栏背景加深
+            if (navbar) {
+              if (winScroll > 100) {
+                navbar.classList.add('bg-white/95');
+                navbar.classList.remove('bg-white/90');
+              } else {
+                navbar.classList.add('bg-white/90');
+                navbar.classList.remove('bg-white/95');
+              }
+            }
+
+            // 回顶按钮显隐 + 透明度
+            if (winScroll > 300) {
+              backToTop.classList.remove('scale-0');
+              backToTop.classList.add('scale-100');
+            } else {
+              backToTop.classList.remove('scale-100');
+              backToTop.classList.add('scale-0');
+            }
+            var scrollProgress = Math.min(winScroll / 1000, 1);
+            backToTop.style.opacity = 0.7 + scrollProgress * 0.3;
+
+            // 阅读进度环
+            if (progressRing) progressRing.style.setProperty('--p', pct + '%');
+
+            // 导航菜单滚动联动高亮
+            updateActiveNav();
+            ticking = false;
+          });
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // 导航激活高亮：判断视口中部所在 section
+        var navSectionIds = ['overview', 'itinerary', 'accommodation', 'food', 'transport', 'tips'];
+        var navLinks = navbar ? navbar.querySelectorAll('.hidden.md\\:flex > a') : [];
+        function updateActiveNav() {
+          if (!navLinks.length) return;
+          var vh = window.innerHeight;
+          var midLine = vh * 0.4;
+          var activeId = '';
+          for (var i = 0; i < navSectionIds.length; i++) {
+            var sec = document.getElementById(navSectionIds[i]);
+            if (!sec) continue;
+            var rect = sec.getBoundingClientRect();
+            if (rect.top <= midLine && rect.bottom >= midLine) {
+              activeId = navSectionIds[i];
+              break;
+            }
           }
-      });
+          var scrolled = document.body.scrollTop || document.documentElement.scrollTop;
+          navLinks.forEach(function (link) {
+            var hash = (link.getAttribute('href') || '').slice(1);
+            if (activeId && hash === activeId && scrolled > 120) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
 
-      // 移动端菜单
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-      const closeMenu = document.getElementById('close-menu');
+        // ===== 移动端菜单（侧滑抽屉） =====
+        var mobileMenuButton = document.getElementById('mobile-menu-button');
+        var mobileMenu = document.getElementById('mobile-menu');
+        var mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        var closeMenu = document.getElementById('close-menu');
 
-      function openMobileMenu() {
+        function openMobileMenu() {
           mobileMenu.classList.remove('translate-x-full');
           mobileMenu.classList.add('translate-x-0');
           mobileMenuOverlay.classList.remove('hidden');
           document.body.style.overflow = 'hidden';
-      }
-
-      function closeMobileMenu() {
+        }
+        function closeMobileMenu() {
           mobileMenu.classList.remove('translate-x-0');
           mobileMenu.classList.add('translate-x-full');
-          setTimeout(() => {
-              mobileMenuOverlay.classList.add('hidden');
-              document.body.style.overflow = '';
+          setTimeout(function () {
+            mobileMenuOverlay.classList.add('hidden');
+            document.body.style.overflow = '';
           }, 300);
-      }
-
-      mobileMenuButton.addEventListener('click', openMobileMenu);
-      closeMenu.addEventListener('click', closeMobileMenu);
-      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-
-      // 移动菜单链接点击关闭菜单
-      const mobileLinks = mobileMenu.querySelectorAll('a');
-      mobileLinks.forEach(link => {
+        }
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMenu.addEventListener('click', closeMobileMenu);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+        mobileMenu.querySelectorAll('a').forEach(function (link) {
           link.addEventListener('click', closeMobileMenu);
-      });
+        });
 
-      // 平滑滚动
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // ===== 平滑滚动 =====
+        document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
           anchor.addEventListener('click', function (e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (target) {
               e.preventDefault();
-              const target = document.querySelector(this.getAttribute('href'));
-              if (target) {
-                  window.scrollTo({
-                      top: target.offsetTop - 80,
-                      behavior: 'smooth'
-                  });
-              }
+              window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+            }
           });
-      });
+        });
 
-      // 卡片悬停效果
-      const cards = document.querySelectorAll('.card-hover');
-      cards.forEach(card => {
-          card.addEventListener('mouseenter', function() {
-              this.style.transform = 'translateY(-8px)';
-              this.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+        // ===== 卡片错落入场（reveal） =====
+        var revealObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
           });
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
-          card.addEventListener('mouseleave', function() {
-              this.style.transform = 'translateY(0)';
-              this.style.boxShadow = '';
+        // 为每个网格容器的直接子卡片设置 --i 并观察，实现错落浮入
+        document.querySelectorAll('.grid').forEach(function (grid) {
+          var i = 0;
+          Array.prototype.forEach.call(grid.children, function (card) {
+            if (card.classList.contains('reveal')) return;
+            card.classList.add('reveal');
+            card.style.setProperty('--i', i);
+            revealObserver.observe(card);
+            i++;
           });
-      });
+        });
+        // 独立的非网格卡片（如路线图、美食大图）单独观察
+        document.querySelectorAll('.gradient-border').forEach(function (el) {
+          if (el.classList.contains('reveal')) return;
+          el.classList.add('reveal');
+          revealObserver.observe(el);
+        });
 
-      // 页面加载动画
-      window.addEventListener('load', function() {
-          document.body.classList.add('loaded');
-      });
-
-      // 键盘导航支持
-      document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape') {
-              closeMobileMenu();
-          }
-      });
-
-      // 返回顶部功能 ================================================
-
-      // 获取返回顶部按钮
-      const backToTop = document.getElementById('backToTop');
-
-      // 滚动显示/隐藏按钮
-      window.addEventListener('scroll', function() {
-          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-
-          if (winScroll > 300) {
-              backToTop.classList.remove('scale-0');
-              backToTop.classList.add('scale-100');
-          } else {
-              backToTop.classList.remove('scale-100');
-              backToTop.classList.add('scale-0');
-          }
-
-          // 增强效果：根据滚动位置变化透明度
-          const scrollProgress = Math.min(winScroll / 1000, 1);
-          backToTop.style.opacity = 0.7 + scrollProgress * 0.3;
-      });
-
-      // 点击返回顶部
-      backToTop.addEventListener('click', function() {
-          window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-          });
-
-          // 点击反馈效果
+        // ===== 返回顶部按钮交互 =====
+        backToTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
           this.style.transform = 'scale(0.95)';
-          setTimeout(() => {
-              this.style.transform = '';
-          }, 150);
-      });
-
-      // 按钮悬停效果
-      backToTop.addEventListener('mouseenter', function() {
+          var self = this;
+          setTimeout(function () { self.style.transform = ''; }, 150);
+        });
+        backToTop.addEventListener('mouseenter', function () {
           this.style.animation = 'pulseGlow 2s ease-in-out infinite';
-          const icon = this.querySelector('i');
-          if (icon) {
-              icon.style.animation = 'bounceUp 1s ease-in-out infinite';
-          }
-      });
-
-      backToTop.addEventListener('mouseleave', function() {
+          var icon = this.querySelector('i');
+          if (icon) icon.style.animation = 'bounceUp 1s ease-in-out infinite';
+        });
+        backToTop.addEventListener('mouseleave', function () {
           this.style.animation = '';
-          const icon = this.querySelector('i');
-          if (icon) {
-              icon.style.animation = '';
-          }
-      });
+          var icon = this.querySelector('i');
+          if (icon) icon.style.animation = '';
+        });
 
-      // 键盘快捷键支持
-      document.addEventListener('keydown', function(e) {
-          // 按 Home 键返回顶部
+        // ===== 键盘支持 =====
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') closeMobileMenu();
           if (e.key === 'Home') {
-              e.preventDefault();
-              window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth'
-              });
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
           }
-      });
+        });
 
-      // 页面加载完成后的初始化
-      window.addEventListener('load', function() {
-          // 确保按钮初始隐藏
+        // ===== 页面加载动画 =====
+        window.addEventListener('load', function () {
+          document.body.classList.add('loaded');
           backToTop.classList.add('scale-0');
-      });
+          onScroll();
+        });
 
-      // 添加页面加载动画
-      window.addEventListener('load', function() {
-          // 添加淡入效果
-          document.body.style.opacity = '0';
-          let opacity = 0;
-          const fadeIn = setInterval(function() {
-              if (opacity >= 1) {
-                  clearInterval(fadeIn);
-              }
-              document.body.style.opacity = opacity;
-              opacity += 0.1;
-          }, 50);
-      });
-
-      // 添加元素进入视口时的动画效果
-      const observerOptions = {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver(function(entries) {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  entry.target.style.opacity = '1';
-                  entry.target.style.transform = 'translateY(0)';
-              }
+        // ===== 路线图拖拽交互 =====
+        var routeMap = document.querySelector('.route-map');
+        if (routeMap) {
+          var isDragging = false;
+          var startX, startY, scrollLeft, scrollTop;
+          routeMap.addEventListener('mousedown', function (e) {
+            isDragging = true;
+            startX = e.pageX - routeMap.offsetLeft;
+            startY = e.pageY - routeMap.offsetTop;
+            scrollLeft = routeMap.scrollLeft;
+            scrollTop = routeMap.scrollTop;
+            routeMap.style.cursor = 'grabbing';
           });
-      }, observerOptions);
-
-      // 为所有卡片添加进入动画
-      const animatedElements = document.querySelectorAll('.card-hover, .gradient-border');
-      animatedElements.forEach(element => {
-          element.style.opacity = '0';
-          element.style.transform = 'translateY(30px)';
-          element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-          observer.observe(element);
-      });
-
-      // 地图交互效果
-      const routeMap = document.querySelector('.route-map');
-      if (routeMap) {
-          let isDragging = false;
-          let startX, startY, scrollLeft, scrollTop;
-
-          routeMap.addEventListener('mousedown', function(e) {
-              isDragging = true;
-              startX = e.pageX - routeMap.offsetLeft;
-              startY = e.pageY - routeMap.offsetTop;
-              scrollLeft = routeMap.scrollLeft;
-              scrollTop = routeMap.scrollTop;
-              routeMap.style.cursor = 'grabbing';
+          routeMap.addEventListener('mouseleave', function () { isDragging = false; routeMap.style.cursor = 'grab'; });
+          routeMap.addEventListener('mouseup', function () { isDragging = false; routeMap.style.cursor = 'grab'; });
+          routeMap.addEventListener('mousemove', function (e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            var x = e.pageX - routeMap.offsetLeft;
+            var y = e.pageY - routeMap.offsetTop;
+            routeMap.scrollLeft = scrollLeft - (x - startX) * 1.5;
+            routeMap.scrollTop = scrollTop - (y - startY) * 1.5;
           });
-
-          routeMap.addEventListener('mouseleave', function() {
-              isDragging = false;
-              routeMap.style.cursor = 'grab';
-          });
-
-          routeMap.addEventListener('mouseup', function() {
-              isDragging = false;
-              routeMap.style.cursor = 'grab';
-          });
-
-          routeMap.addEventListener('mousemove', function(e) {
-              if (!isDragging) return;
-              e.preventDefault();
-              const x = e.pageX - routeMap.offsetLeft;
-              const y = e.pageY - routeMap.offsetTop;
-              const walkX = (x - startX) * 1.5;
-              const walkY = (y - startY) * 1.5;
-              routeMap.scrollLeft = scrollLeft - walkX;
-              routeMap.scrollTop = scrollTop - walkY;
-          });
-
           routeMap.style.cursor = 'grab';
-      }
+        }
+
+        // 初始化一次
+        onScroll();
+      })();
     </script>
   </body>
 </html>
