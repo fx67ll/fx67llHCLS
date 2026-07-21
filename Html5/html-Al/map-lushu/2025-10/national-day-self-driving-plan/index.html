@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <!-- saved from url=(0185)https://ai.fx67ll.com/national-day-self-driving-plan/ -->
-<html lang="zh-CN">
+<html lang="zh-CN" class="no-js">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>南京国庆舟山小众游 | 5天4晚深度攻略</title>
     <link rel="shortcut icon" type="image/x-icon" href="https://test.fx67ll.com/fx67ll-img-collection/fx67ll.jpg" />
-    <script src="./national-day-self-driving-plan_files/static/saved/saved_resource"></script>
+    <!-- 预加载图标字体（woff2 仅 77KB），让 Font Awesome 图标尽快显示 -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="./national-day-self-driving-plan_files/static/fonts/fontawesome-webfont.woff2"
+      crossorigin
+    />
+    <!-- Tailwind Play 运行时（407KB）改为 defer，解除渲染阻塞：HTML/CSS/图标先渲染，运行时后台处理 -->
+    <script defer src="./national-day-self-driving-plan_files/static/saved/saved_resource"></script>
     <link href="./national-day-self-driving-plan_files/font-awesome.min.css" rel="stylesheet" />
     <script>
       tailwind.config = {
@@ -110,8 +119,25 @@
       .scroll-smooth {
           scroll-behavior: smooth;
       }
+
+      /* 入场动画初始隐藏（提前声明，避免脚本执行前闪烁） */
+      .animate-slide-up {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .animate-slide-up.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+      }
+      /* JS 不可用时的兜底 */
+      .no-js .animate-slide-up { opacity: 1; transform: none; }
+      .no-js .timeline-dot { transform: translateX(-50%) scale(1); }
+      .no-js .timeline-axis { transform: translateX(-50%) scaleY(1); }
+      .no-js .reveal { opacity: 1; transform: none; }
     </style>
-    <style src="./national-day-self-driving-plan_files/national-day-self-driving-plan.css"></style>
+    <link rel="stylesheet" href="./national-day-self-driving-plan_files/national-day-self-driving-plan.css" />
   </head>
   <body class="font-inter bg-gray-50 scroll-smooth" style="opacity: 1; transition: opacity 0.5s ease-in-out;">
     <!-- 进度条 -->
@@ -135,39 +161,33 @@
             </span>
           </div>
           <div class="hidden md:flex space-x-8" data-doubao-translate-traverse-mark="1">
-            <a
+            <a class="nav-link text-white hover:text-accent transition-colors duration-300" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#itinerary"
-              class="text-white hover:text-accent transition-colors duration-300"
               data-doubao-translate-traverse-mark="1"
               >行程规划</a
             >
-            <a
+            <a class="nav-link text-white hover:text-accent transition-colors duration-300" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#attractions"
-              class="text-white hover:text-accent transition-colors duration-300"
               data-doubao-translate-traverse-mark="1"
               >景点推荐</a
             >
-            <a
+            <a class="nav-link text-white hover:text-accent transition-colors duration-300" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#food"
-              class="text-white hover:text-accent transition-colors duration-300"
               data-doubao-translate-traverse-mark="1"
               >美食指南</a
             >
-            <a
+            <a class="nav-link text-white hover:text-accent transition-colors duration-300" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#accommodation"
-              class="text-white hover:text-accent transition-colors duration-300"
               data-doubao-translate-traverse-mark="1"
               >住宿推荐</a
             >
-            <a
+            <a class="nav-link text-white hover:text-accent transition-colors duration-300" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#budget"
-              class="text-white hover:text-accent transition-colors duration-300"
               data-doubao-translate-traverse-mark="1"
               >费用预估</a
             >
-            <a
+            <a class="nav-link text-white hover:text-accent transition-colors duration-300" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#tips"
-              class="text-white hover:text-accent transition-colors duration-300"
               data-doubao-translate-traverse-mark="1"
               >实用贴士</a
             >
@@ -180,39 +200,33 @@
       <!-- 移动端菜单 -->
       <div class="md:hidden hidden glass-effect" id="mobileMenu" data-doubao-translate-traverse-mark="1">
         <div class="px-2 pt-2 pb-3 space-y-1" data-doubao-translate-traverse-mark="1">
-          <a
+          <a class="nav-link block px-3 py-2 text-white hover:text-accent" 
             href="https://ai.fx67ll.com/national-day-self-driving-plan/#itinerary"
-            class="block px-3 py-2 text-white hover:text-accent"
             data-doubao-translate-traverse-mark="1"
             >行程规划</a
           >
-          <a
+          <a class="nav-link block px-3 py-2 text-white hover:text-accent" 
             href="https://ai.fx67ll.com/national-day-self-driving-plan/#attractions"
-            class="block px-3 py-2 text-white hover:text-accent"
             data-doubao-translate-traverse-mark="1"
             >景点推荐</a
           >
-          <a
+          <a class="nav-link block px-3 py-2 text-white hover:text-accent" 
             href="https://ai.fx67ll.com/national-day-self-driving-plan/#food"
-            class="block px-3 py-2 text-white hover:text-accent"
             data-doubao-translate-traverse-mark="1"
             >美食指南</a
           >
-          <a
+          <a class="nav-link block px-3 py-2 text-white hover:text-accent" 
             href="https://ai.fx67ll.com/national-day-self-driving-plan/#accommodation"
-            class="block px-3 py-2 text-white hover:text-accent"
             data-doubao-translate-traverse-mark="1"
             >住宿推荐</a
           >
-          <a
+          <a class="nav-link block px-3 py-2 text-white hover:text-accent" 
             href="https://ai.fx67ll.com/national-day-self-driving-plan/#budget"
-            class="block px-3 py-2 text-white hover:text-accent"
             data-doubao-translate-traverse-mark="1"
             >费用预估</a
           >
-          <a
+          <a class="nav-link block px-3 py-2 text-white hover:text-accent" 
             href="https://ai.fx67ll.com/national-day-self-driving-plan/#tips"
-            class="block px-3 py-2 text-white hover:text-accent"
             data-doubao-translate-traverse-mark="1"
             >实用贴士</a
           >
@@ -226,7 +240,9 @@
         <img
           src="./national-day-self-driving-plan_files/static/saved/saved_resource(1)"
           alt="舟山朱家尖大青山"
-          class="w-full h-full object-cover parallax"
+          class="w-full h-full object-cover parallax hero-bg"
+          fetchpriority="high"
+          decoding="async"
         />
         <div class="absolute inset-0 bg-black bg-opacity-40"></div>
       </div>
@@ -237,16 +253,14 @@
         </h1>
         <p class="text-xl md:text-2xl mb-8 text-shadow" data-doubao-translate-traverse-mark="1">5天4晚 | 避开人潮 | 电车自驾 | 深度体验</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center" data-doubao-translate-traverse-mark="1">
-          <a
+          <a class="nav-link bg-primary hover:bg-ocean text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 btn-press" 
             href="https://ai.fx67ll.com/national-day-self-driving-plan/#itinerary"
-            class="bg-primary hover:bg-ocean text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
             data-doubao-translate-traverse-mark="1"
           >
             <i class="fa fa-map-o mr-2"></i>开始规划
           </a>
-          <a
+          <a class="nav-link bg-accent hover:bg-yellow-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 btn-press" 
             href="https://ai.fx67ll.com/national-day-self-driving-plan/#budget"
-            class="bg-accent hover:bg-yellow-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105"
             data-doubao-translate-traverse-mark="1"
           >
             <i class="fa fa-calculator mr-2"></i>费用预估
@@ -280,7 +294,7 @@
         <div class="relative" data-doubao-translate-traverse-mark="1">
           <!-- 时间线主轴 -->
           <div
-            class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-primary to-secondary"
+            class="absolute left-1/2 h-full w-1 bg-gradient-to-b from-primary to-secondary timeline-axis"
             data-doubao-translate-traverse-mark="1"
           ></div>
 
@@ -291,7 +305,7 @@
             style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
           >
             <div class="flex items-center justify-center" data-doubao-translate-traverse-mark="1">
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-primary rounded-full border-4 border-white shadow-lg z-10"></div>
+              <div class="absolute left-1/2 w-8 h-8 bg-primary rounded-full border-4 border-white shadow-lg z-10 timeline-dot dot-pulse"></div>
             </div>
             <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto card-hover" data-doubao-translate-traverse-mark="1">
               <div class="text-center mb-6" data-doubao-translate-traverse-mark="1">
@@ -343,7 +357,7 @@
             style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
           >
             <div class="flex items-center justify-center" data-doubao-translate-traverse-mark="1">
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-secondary rounded-full border-4 border-white shadow-lg z-10"></div>
+              <div class="absolute left-1/2 w-8 h-8 bg-secondary rounded-full border-4 border-white shadow-lg z-10 timeline-dot dot-pulse"></div>
             </div>
             <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto card-hover" data-doubao-translate-traverse-mark="1">
               <div class="text-center mb-6" data-doubao-translate-traverse-mark="1">
@@ -392,7 +406,7 @@
             style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
           >
             <div class="flex items-center justify-center" data-doubao-translate-traverse-mark="1">
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-accent rounded-full border-4 border-white shadow-lg z-10"></div>
+              <div class="absolute left-1/2 w-8 h-8 bg-accent rounded-full border-4 border-white shadow-lg z-10 timeline-dot dot-pulse"></div>
             </div>
             <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto card-hover" data-doubao-translate-traverse-mark="1">
               <div class="text-center mb-6" data-doubao-translate-traverse-mark="1">
@@ -439,7 +453,7 @@
             style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
           >
             <div class="flex items-center justify-center" data-doubao-translate-traverse-mark="1">
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-ocean rounded-full border-4 border-white shadow-lg z-10"></div>
+              <div class="absolute left-1/2 w-8 h-8 bg-ocean rounded-full border-4 border-white shadow-lg z-10 timeline-dot dot-pulse"></div>
             </div>
             <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto card-hover" data-doubao-translate-traverse-mark="1">
               <div class="text-center mb-6" data-doubao-translate-traverse-mark="1">
@@ -488,7 +502,7 @@
             style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
           >
             <div class="flex items-center justify-center" data-doubao-translate-traverse-mark="1">
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-primary rounded-full border-4 border-white shadow-lg z-10"></div>
+              <div class="absolute left-1/2 w-8 h-8 bg-primary rounded-full border-4 border-white shadow-lg z-10 timeline-dot dot-pulse"></div>
             </div>
             <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto card-hover" data-doubao-translate-traverse-mark="1">
               <div class="text-center mb-6" data-doubao-translate-traverse-mark="1">
@@ -535,7 +549,7 @@
             style="opacity: 1; transform: translateY(0px); transition: opacity 0.6s ease-out, transform 0.6s ease-out;"
           >
             <div class="flex items-center justify-center" data-doubao-translate-traverse-mark="1">
-              <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-secondary rounded-full border-4 border-white shadow-lg z-10"></div>
+              <div class="absolute left-1/2 w-8 h-8 bg-secondary rounded-full border-4 border-white shadow-lg z-10 timeline-dot dot-pulse"></div>
             </div>
             <div class="bg-white rounded-2xl shadow-xl p-8 max-w-4xl mx-auto card-hover" data-doubao-translate-traverse-mark="1">
               <div class="text-center mb-6" data-doubao-translate-traverse-mark="1">
@@ -820,7 +834,7 @@
             <!-- 中国海岬公园 -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-doubao-translate-traverse-mark="1">
               <div class="relative h-48" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/saved/saved_resource(3)"
                   alt="中国海岬公园"
                   class="w-full h-full object-cover"
@@ -847,7 +861,7 @@
             <!-- 燕黄线沿海公路 -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-doubao-translate-traverse-mark="1">
               <div class="relative h-48" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/imgs/yanhuangxian.jpeg"
                   alt="燕黄线沿海公路"
                   class="w-full h-full object-cover"
@@ -876,7 +890,7 @@
             <!-- 磨心山景区 -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-doubao-translate-traverse-mark="1">
               <div class="relative h-48" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/saved/saved_resource(6)"
                   alt="磨心山景区"
                   class="w-full h-full object-cover"
@@ -903,7 +917,7 @@
             <!-- 岱山灯塔博物馆 -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-doubao-translate-traverse-mark="1">
               <div class="relative h-48" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/imgs/daishandengtabowuguan.jpeg"
                   alt="岱山灯塔博物馆"
                   class="w-full h-full object-cover"
@@ -930,7 +944,7 @@
             <!-- 东沙古镇 -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-doubao-translate-traverse-mark="1">
               <div class="relative h-48" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/imgs/dongshaguyuzhen.jpeg"
                   alt="东沙古镇"
                   class="w-full h-full object-cover"
@@ -957,7 +971,7 @@
             <!-- 牛轭山观海公园 -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-doubao-translate-traverse-mark="1">
               <div class="relative h-48" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/saved/saved_resource(2)"
                   alt="牛轭山观海公园"
                   class="w-full h-full object-cover"
@@ -997,7 +1011,7 @@
             <!-- 大青山国家公园 -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-doubao-translate-traverse-mark="1">
               <div class="relative h-48" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/saved/saved_resource(8)"
                   alt="大青山国家公园"
                   class="w-full h-full object-cover"
@@ -1024,7 +1038,7 @@
             <!-- 大青山滨海环线 -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-doubao-translate-traverse-mark="1">
               <div class="relative h-48" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/saved/saved_resource(9)"
                   alt="大青山滨海环线"
                   class="w-full h-full object-cover"
@@ -1051,7 +1065,7 @@
             <!-- 螺塘线沿海公路 -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover" data-doubao-translate-traverse-mark="1">
               <div class="relative h-48" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/saved/saved_resource(10)"
                   alt="螺塘线沿海公路"
                   class="w-full h-full object-cover"
@@ -1090,7 +1104,7 @@
           <div class="bg-white rounded-2xl shadow-xl overflow-hidden max-w-4xl mx-auto card-hover" data-doubao-translate-traverse-mark="1">
             <div class="grid md:grid-cols-2" data-doubao-translate-traverse-mark="1">
               <div class="relative h-64 md:h-auto" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/saved/saved_resource(14)"
                   alt="南浔古镇百间楼"
                   class="w-full h-full object-cover"
@@ -1348,7 +1362,7 @@
               </div>
             </div>
             <div class="relative max-w-4xl mx-auto" data-doubao-translate-traverse-mark="1">
-              <img
+              <img loading="lazy" decoding="async" 
                 src="./national-day-self-driving-plan_files/static/saved/saved_resource(12)"
                 alt="舟山海鲜大餐"
                 class="w-full h-64 object-cover rounded-2xl shadow-xl"
@@ -1569,7 +1583,7 @@
             <!-- 岱山秀山秀水湾休闲度假村私人海景公寓 -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover border-2 border-green-200" data-doubao-translate-traverse-mark="1">
               <div class="relative h-48" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/saved/saved_resource(2)"
                   alt="岱山秀山秀水湾休闲度假村私人海景公寓"
                   class="w-full h-full object-cover"
@@ -1596,7 +1610,7 @@
             <!-- 舟山朱家尖九千七·群岛晚霞海景美宿 -->
             <div class="bg-white rounded-2xl shadow-xl overflow-hidden card-hover border-2 border-green-200" data-doubao-translate-traverse-mark="1">
               <div class="relative h-48" data-doubao-translate-traverse-mark="1">
-                <img
+                <img loading="lazy" decoding="async" 
                   src="./national-day-self-driving-plan_files/static/saved/saved_resource(9)"
                   alt="舟山朱家尖九千七·群岛晚霞海景美宿"
                   class="w-full h-full object-cover"
@@ -2063,39 +2077,33 @@
           </div>
           <p class="text-gray-400 mb-6" data-doubao-translate-traverse-mark="1">愿您的海岛之旅充满美好回忆</p>
           <div class="flex justify-center space-x-6 mb-8" data-doubao-translate-traverse-mark="1">
-            <a
+            <a class="nav-link text-gray-400 hover:text-primary transition-colors" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#itinerary"
-              class="text-gray-400 hover:text-primary transition-colors"
               data-doubao-translate-traverse-mark="1"
               >行程规划</a
             >
-            <a
+            <a class="nav-link text-gray-400 hover:text-primary transition-colors" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#attractions"
-              class="text-gray-400 hover:text-primary transition-colors"
               data-doubao-translate-traverse-mark="1"
               >景点推荐</a
             >
-            <a
+            <a class="nav-link text-gray-400 hover:text-primary transition-colors" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#food"
-              class="text-gray-400 hover:text-primary transition-colors"
               data-doubao-translate-traverse-mark="1"
               >美食指南</a
             >
-            <a
+            <a class="nav-link text-gray-400 hover:text-primary transition-colors" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#accommodation"
-              class="text-gray-400 hover:text-primary transition-colors"
               data-doubao-translate-traverse-mark="1"
               >住宿推荐</a
             >
-            <a
+            <a class="nav-link text-gray-400 hover:text-primary transition-colors" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#budget"
-              class="text-gray-400 hover:text-primary transition-colors"
               data-doubao-translate-traverse-mark="1"
               >费用预估</a
             >
-            <a
+            <a class="nav-link text-gray-400 hover:text-primary transition-colors" 
               href="https://ai.fx67ll.com/national-day-self-driving-plan/#tips"
-              class="text-gray-400 hover:text-primary transition-colors"
               data-doubao-translate-traverse-mark="1"
               >实用贴士</a
             >
@@ -2131,112 +2139,185 @@
     <!-- 返回顶部按钮 -->
     <button
       id="backToTop"
-      class="fixed bottom-8 right-8 bg-primary hover:bg-ocean text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300 transform scale-100"
+      class="fixed bottom-8 right-8 bg-primary hover:bg-ocean text-white w-12 h-12 rounded-full shadow-lg transition-all duration-300 transform scale-0 opacity-0 pointer-events-none"
+      aria-label="返回顶部"
       data-doubao-translate-traverse-mark="1"
     >
-      <i class="fa fa-chevron-up"></i>
+      <span class="progress-ring" aria-hidden="true"></span>
+      <i class="fa fa-chevron-up relative"></i>
     </button>
 
     <script data-doubao-translate-traverse-mark="1">
-      // 进度条
-      window.addEventListener('scroll', function() {
-          const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-          const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-          const scrolled = (winScroll / height) * 100;
-          document.getElementById("progressBar").style.width = scrolled + "%";
+      (function () {
+        'use strict';
 
-          // 导航栏背景变化
-          const navbar = document.getElementById("navbar");
-          if (winScroll > 100) {
-              navbar.classList.add("glass-effect");
-          } else {
-              navbar.classList.remove("glass-effect");
-          }
+        // 标记 JS 可用（移除 no-js，使入场动画初始隐藏生效）
+        document.documentElement.classList.remove('no-js');
 
-          // 返回顶部按钮
-          const backToTop = document.getElementById("backToTop");
-          if (winScroll > 300) {
-              backToTop.classList.remove("scale-0");
-              backToTop.classList.add("scale-100");
-          } else {
-              backToTop.classList.remove("scale-100");
-              backToTop.classList.add("scale-0");
-          }
-      });
+        var progressBar = document.getElementById("progressBar");
+        var navbar = document.getElementById("navbar");
+        var backToTop = document.getElementById("backToTop");
+        var progressRing = backToTop ? backToTop.querySelector(".progress-ring") : null;
 
-      // 移动端菜单
-      document.getElementById("mobileMenuBtn").addEventListener("click", function() {
-          const mobileMenu = document.getElementById("mobileMenu");
-          mobileMenu.classList.toggle("hidden");
-      });
+        // rAF 节流的滚动处理
+        var ticking = false;
+        function onScroll() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(function () {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight || 1;
+            var pct = (winScroll / height) * 100;
+            if (progressBar) progressBar.style.width = pct + "%";
 
-      // 返回顶部
-      document.getElementById("backToTop").addEventListener("click", function() {
-          window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
+            // 回顶按钮阅读进度环
+            if (progressRing) progressRing.style.setProperty("--p", pct + "%");
+
+            // 导航栏滚动变实
+            if (navbar) {
+              if (winScroll > 80) navbar.classList.add("navbar-scrolled");
+              else navbar.classList.remove("navbar-scrolled");
+            }
+
+            // 返回顶部按钮显隐
+            if (winScroll > 300) {
+              backToTop.classList.remove("scale-0", "opacity-0", "pointer-events-none");
+              backToTop.classList.add("scale-100", "opacity-100", "pointer-events-auto");
+            } else {
+              backToTop.classList.remove("scale-100", "opacity-100", "pointer-events-auto");
+              backToTop.classList.add("scale-0", "opacity-0", "pointer-events-none");
+            }
+
+            // 时间线主轴随滚动绘制
+            updateTimelineAxis();
+            // 菜单项滚动联动高亮
+            updateActiveNav();
+            ticking = false;
           });
-      });
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
 
-      // 平滑滚动
-      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        // 时间线主轴绘制：根据 #itinerary 在视口的位置设置 scaleY
+        var timelineAxis = document.querySelector('.timeline-axis');
+        var timelineSection = document.getElementById('itinerary');
+        function updateTimelineAxis() {
+          if (!timelineAxis || !timelineSection) return;
+          var rect = timelineSection.getBoundingClientRect();
+          var vh = window.innerHeight;
+          // 从 section 顶部进入视口底部开始，到 section 底部到达视口顶部结束
+          var start = vh;
+          var end = -rect.height;
+          var t = (start - rect.top) / (start - end);
+          t = Math.max(0, Math.min(1, t));
+          timelineAxis.style.transform = 'translateX(-50%) scaleY(' + t.toFixed(4) + ')';
+        }
+
+        // 菜单项滚动联动高亮：判断当前视口中部所在的 section，激活对应导航项
+        var navSections = ['itinerary', 'attractions', 'food', 'accommodation', 'budget', 'tips'];
+        var navLinks = navbar ? navbar.querySelectorAll('.hidden.md\\:flex .nav-link') : [];
+        function updateActiveNav() {
+          if (!navLinks.length) return;
+          var vh = window.innerHeight;
+          var activeId = '';
+          // 视口中部约 40% 位置作为判定线
+          var midLine = vh * 0.4;
+          for (var i = 0; i < navSections.length; i++) {
+            var sec = document.getElementById(navSections[i]);
+            if (!sec) continue;
+            var rect = sec.getBoundingClientRect();
+            // section 顶部在判定线以上且底部在判定线以下 → 当前 section
+            if (rect.top <= midLine && rect.bottom >= midLine) {
+              activeId = navSections[i];
+              break;
+            }
+          }
+          // 滚动到非常顶部时不激活任何项
+          var scrolled = document.body.scrollTop || document.documentElement.scrollTop;
+          navLinks.forEach(function (link) {
+            var href = link.getAttribute('href') || '';
+            var hash = href.slice(href.indexOf('#') + 1);
+            if (activeId && hash === activeId && scrolled > 120) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
+
+        // 移动端菜单
+        document.getElementById("mobileMenuBtn").addEventListener("click", function () {
+          document.getElementById("mobileMenu").classList.toggle("hidden");
+        });
+
+        // 返回顶部
+        backToTop.addEventListener("click", function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // 平滑滚动：匹配所有含 # 锚点的链接（含完整 URL 形式）
+        document.querySelectorAll('a[href*="#"]').forEach(function (anchor) {
           anchor.addEventListener('click', function (e) {
+            var href = this.getAttribute('href');
+            var hash = href.slice(href.indexOf('#'));
+            var target = document.querySelector(hash);
+            if (target) {
               e.preventDefault();
-              const target = document.querySelector(this.getAttribute('href'));
-              if (target) {
-                  target.scrollIntoView({
-                      behavior: 'smooth',
-                      block: 'start'
-                  });
-
-                  // 关闭移动端菜单
-                  document.getElementById("mobileMenu").classList.add("hidden");
-              }
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              document.getElementById("mobileMenu").classList.add("hidden");
+            }
           });
-      });
+        });
 
-      // 动画观察器
-      const observerOptions = {
-          threshold: 0.1,
-          rootMargin: '0px 0px -50px 0px'
-      };
-
-      const observer = new IntersectionObserver(function(entries) {
-          entries.forEach(entry => {
-              if (entry.isIntersecting) {
-                  entry.target.style.opacity = '1';
-                  entry.target.style.transform = 'translateY(0)';
-              }
+        // ===== 入场动画观察器（错落式） =====
+        var revealObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              revealObserver.unobserve(entry.target);
+            }
           });
-      }, observerOptions);
+        }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
-      // 观察所有需要动画的元素
-      document.querySelectorAll('.animate-slide-up').forEach(el => {
-          el.style.opacity = '0';
-          el.style.transform = 'translateY(30px)';
-          el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-          observer.observe(el);
-      });
+        // 1) section 标题/容器：.animate-slide-up 自身已隐藏，进入视口加 is-visible
+        //    清除保存态的内联终态样式，交由 CSS 控制
+        document.querySelectorAll('.animate-slide-up').forEach(function (el) {
+          el.style.opacity = '';
+          el.style.transform = '';
+          el.style.transition = '';
+          revealObserver.observe(el);
+        });
 
-      // 页面加载完成后的初始化
-      window.addEventListener('load', function() {
-          // 添加加载动画
+        // 2) 网格内卡片错落浮入：为每个 grid 容器的直接子卡片设置 --i 并观察
+        document.querySelectorAll('.grid').forEach(function (grid) {
+          var cards = grid.children;
+          var i = 0;
+          Array.prototype.forEach.call(cards, function (card) {
+            // 仅给卡片型直接子元素加错落动画，跳过已观察的 .animate-slide-up 容器
+            if (!card.classList.contains('animate-slide-up') && !card.classList.contains('reveal')) {
+              card.classList.add('reveal');
+              card.style.setProperty('--i', i);
+              revealObserver.observe(card);
+              i++;
+            }
+          });
+        });
+
+        // 3) 时间线圆点弹出
+        document.querySelectorAll('.timeline-dot').forEach(function (dot) {
+          revealObserver.observe(dot);
+        });
+
+        // 页面加载完成的淡入
+        window.addEventListener('load', function () {
           document.body.style.opacity = '0';
           document.body.style.transition = 'opacity 0.5s ease-in-out';
+          setTimeout(function () { document.body.style.opacity = '1'; }, 50);
+          onScroll(); // 初始化进度条/按钮状态
+        });
 
-          setTimeout(() => {
-              document.body.style.opacity = '1';
-          }, 100);
-      });
-
-      // 实时时间显示（可选）
-      function updateTime() {
-          const now = new Date();
-          const timeString = now.toLocaleString('zh-CN');
-          // 可以在页面某个位置显示当前时间
-      }
-
-      setInterval(updateTime, 1000);
+        // DOM 就绪后立即触发一次（防 load 事件延迟导致首屏状态不对）
+        onScroll();
+      })();
     </script>
   </body>
 </html>
