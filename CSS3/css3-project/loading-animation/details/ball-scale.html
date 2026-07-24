@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ball Scale · Loading 效果集</title>
+<link rel="stylesheet" href="../loader-awesome/css/ball-scale.min.css">
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  :root {
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --border: #e6e8ec;
+    --text: #1a1d24;
+    --text-muted: #6b7280;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --code-bg: #0f172a;
+    --code-text: #e2e8f0;
+    --shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 12px rgba(0,0,0,.05);
+  }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+                 "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { color: var(--accent-hover); }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+  pre {
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 18px 20px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 13.5px;
+    line-height: 1.65;
+    margin: 0;
+  }
+  code {
+    font-family: "SF Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+  }
+  p code, li code {
+    background: rgba(99,102,241,.08);
+    color: #4338ca;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+  }
+
+  .site-header {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(10px);
+  }
+  .header-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--text); }
+  .brand-dot { width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #ec4899); display: inline-block; }
+  .back-btn {
+    padding: 6px 14px; border-radius: 999px; background: #f3f4f6; color: var(--text);
+    font-size: 14px; transition: background .2s;
+  }
+  .back-btn:hover { background: #e5e7eb; color: var(--text); }
+
+  .detail-hero { padding: 32px 0 24px; }
+  .breadcrumb { color: var(--text-muted); font-size: 13px; margin-bottom: 8px; }
+  .breadcrumb .tag {
+    display: inline-block; padding: 2px 10px; border-radius: 999px;
+    background: #eef2ff; color: #4f46e5; font-weight: 500;
+    margin-right: 6px;
+  }
+  .detail-title { font-size: 32px; margin: 0 0 8px; font-weight: 700; }
+  .detail-desc { color: var(--text-muted); margin: 0; font-size: 15.5px; }
+
+  .preview-wrap {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    margin-bottom: 32px;
+  }
+  .preview-wrap .preview-bar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 12px 18px; border-bottom: 1px solid var(--border);
+    background: #fafbfc;
+  }
+  .preview-wrap .dot {
+    width: 10px; height: 10px; border-radius: 50%; background: #d1d5db;
+  }
+  .preview-wrap .dot.r { background: #f87171; }
+  .preview-wrap .dot.y { background: #fbbf24; }
+  .preview-wrap .dot.g { background: #34d399; }
+  .preview-bar-title { margin-left: 12px; color: var(--text-muted); font-size: 13px; }
+
+  .preview-stage {
+    min-height: 380px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff;
+    position: relative;
+  }
+  .iframe-preview {
+    width: 100%; height: 480px; border: 0; display: block;
+  }
+
+  section.docs { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 56px; }
+  .doc-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    box-shadow: var(--shadow);
+  }
+  .doc-card h2 { margin: 0 0 14px; font-size: 18px; }
+  .doc-card p, .doc-card li { color: #374151; }
+  .doc-card ol { margin: 0; padding-left: 22px; }
+  .doc-card ol li { margin-bottom: 8px; }
+
+  .site-footer { padding: 32px 0 48px; color: var(--text-muted); font-size: 13px; text-align: center; }
+
+  @media (max-width: 600px) {
+    .detail-title { font-size: 24px; }
+    .preview-stage { min-height: 280px; }
+    .iframe-preview { height: 360px; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand">
+        <span class="brand-dot"></span>
+        <span>Loading 效果集</span>
+      </a>
+      <a href="../index.html" class="back-btn">← 返回首页</a>
+    </div>
+  </header>
+
+
+<main>
+  <div class="container detail-hero">
+    <div class="breadcrumb">
+      <span class="tag">Load Awesome</span>
+    </div>
+    <h1 class="detail-title">Ball Scale</h1>
+    <p class="detail-desc">单个圆球持续放大并淡出，简洁明快。</p>
+  </div>
+
+  <div class="container">
+    <div class="preview-wrap">
+      <div class="preview-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="preview-bar-title">实时预览</span>
+      </div>
+      <div class="preview-stage" style="background:#87c4a3">
+        <div class="la-ball-scale la-2x">
+          <div></div>
+        </div></div>
+    </div>
+
+    <section class="docs">
+      <div class="doc-card">
+        <h2>HTML 结构</h2>
+        <pre><code class="lang-html">&lt;div class="la-ball-scale"&gt;
+  &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+      </div>
+
+      <div class="doc-card">
+        <h2>CSS 样式</h2>
+        <p>详见仓库内 <a href="../loader-awesome/css/ball-scale.css" target="_blank">loader-awesome/css/ball-scale.css</a>（已经是完整可复用样式）。</p>
+      </div>
+
+      <div class="doc-card">
+        <h2>使用说明</h2>
+        
+      <ol>
+        <li>在 <code>&lt;head&gt;</code> 中引入 CSS：<br>
+          <code>&lt;link rel="stylesheet" href="loader-awesome/css/ball-scale.min.css"&gt;</code>
+        </li>
+        <li>在页面中使用对应的 HTML 结构（见下方代码）。</li>
+        <li>可选尺寸修饰类：<code>.la-sm</code>（小）、<code>.la-2x</code>（2 倍）、<code>.la-3x</code>（3 倍）。</li>
+        <li>可选主题修饰类：<code>.la-dark</code>（深色），或在元素上设置 <code>color</code> 自定义颜色。</li>
+      </ol>
+      </div>
+    </section>
+  </div>
+</main>
+
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>共收录 41 个 loading 动画 · 资源整理自 loader-awesome / loader-better / loader-multiple / loader-single</p>
+    </div>
+  </footer>
+
+</body>
+</html>
